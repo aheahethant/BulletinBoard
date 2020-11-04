@@ -6,14 +6,16 @@
         <p class="font-weight-bold">Post List</p>
     </div>
     <div class="container">
-        <div class="row ml-auto mt-2 d-flex justify-content-between col-10">
-            <form class="col-10">
-                <label>Keyword : </label>
-                <input type="text" class="col-2">
-                <button type="submit" class="btn btn-primary col-2">Search</button>
-                <a class="btn btn-primary col-2" href="#" role="button">Create</a>
-                <a class="btn btn-primary col-2" href="#" role="button">Upload</a>
-                <a class="btn btn-primary col-2" href="#" role="button">Download</a>
+        <div class="row mt-3 float-right">
+            <form>
+                <div class="form-row d-flex justify-content-between">
+                    <label class="mt-2">Keyword : </label>
+                    <input type="text" class="col-sm-2">
+                    <button type="submit" class="btn btn-primary col-sm-2 mt-1">Search</button>
+                    <a class="btn btn-primary col-sm-2 mt-1" href="#" role="button">Create</a>
+                    <a class="btn btn-primary col-sm-2 mt-1" href="#" role="button">Upload</a>
+                    <a class="btn btn-primary col-sm-2 mt-1" href="#" role="button">Download</a>
+                </div>
             </form>
         </div>
         <div class="table-responsive">
