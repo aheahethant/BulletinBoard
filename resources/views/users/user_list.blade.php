@@ -87,6 +87,7 @@
                 </div>
             </div>
         </div>
+
         <div class="table-responsive">
             <table id="datatable" class="table mt-3 col-12">
                 <thead>
@@ -106,8 +107,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td data-toggle="modal" data-target="#exampleModal">1</td>
-                        <td>Su Su</td>
+                        <td>1</td>
+                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Su Su</td>
                         <td>scm.test@gmail.com</td>
                         <td>admin</td>
                         <td>admin</td>
@@ -121,8 +122,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td data-toggle="modal" data-target="#exampleModal">1</td>
-                        <td>Su Su</td>
+                        <td>1</td>
+                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Su Su</td>
                         <td>scm.test@gmail.com</td>
                         <td>admin</td>
                         <td>admin</td>
@@ -136,8 +137,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td data-toggle="modal" data-target="#exampleModal">1</td>
-                        <td>Su Su</td>
+                        <td>1</td>
+                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Su Su</td>
                         <td>scm.test@gmail.com</td>
                         <td>admin</td>
                         <td>admin</td>
@@ -151,8 +152,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td data-toggle="modal" data-target="#exampleModal">1</td>
-                        <td>Su Su</td>
+                        <td>1</td>
+                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Su Su</td>
                         <td>scm.test@gmail.com</td>
                         <td>admin</td>
                         <td>admin</td>
@@ -166,8 +167,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td data-toggle="modal" data-target="#exampleModal">1</td>
-                        <td>Su Su</td>
+                        <td>1</td>
+                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Su Su</td>
                         <td>scm.test@gmail.com</td>
                         <td>admin</td>
                         <td>admin</td>

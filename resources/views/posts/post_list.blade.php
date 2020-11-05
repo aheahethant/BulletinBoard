@@ -31,42 +31,42 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">Post1</th>
+                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Post3</td>
                         <td>Hello World!</td>
                         <td>admin</td>
                         <td>2020/11/04</td>
                         <td>
-                            <button type="button" class="btn btn-primary">Edit</button>
+                            <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
                             <button type="button" class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Post2</th>
+                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Post3</td>
                         <td>Hello World!</td>
                         <td>admin</td>
                         <td>2020/11/04</td>
                         <td>
-                            <button type="button" class="btn btn-primary">Edit</button>
+                            <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
                             <button type="button" class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Post3</th>
+                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Post3</td>
                         <td>Hello World!</td>
                         <td>admin</td>
                         <td>2020/11/04</td>
                         <td>
-                            <button type="button" class="btn btn-primary">Edit</button>
+                            <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
                             <button type="button" class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Post4</th>
+                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Post3</td>
                         <td>Hello World!</td>
                         <td>admin</td>
                         <td>2020/11/04</td>
                         <td>
-                            <button type="button" class="btn btn-primary">Edit</button>
+                            <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
                             <button type="button" class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
@@ -75,5 +75,52 @@
         </div>
     </div>
 </div>
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Post Detail</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <label class="col-sm-5">Title</label>
+                        <p class="col-sm-6">Admin</p>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-5">Description</label>
+                        <p class="col-sm-6">Post Description</p>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-5">Status</label>
+                        <p class="col-sm-6">Active</p>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-5">Created Date</label>
+                        <p class="col-sm-6">2020/11/05</p>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-5">Created User</label>
+                        <p class="col-sm-6">Admin</p>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-5">Updated Date</label>
+                        <p class="col-sm-6">2020/11/05</p>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-5">Updated User</label>
+                        <p class="col-sm-6">Admin</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
