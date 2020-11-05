@@ -22,6 +22,9 @@ Route::get('/post_list', function () {
 Route::get('/user_list', function () {
     return view('users.user_list');
 });
+Route::get('/create_post', function () {
+    return view('posts.create');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
