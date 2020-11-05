@@ -16,13 +16,25 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.app');
 });
-Route::get('/post_list', function () {
-    return view('posts.post_list');
-})->name('post_list');
 
+/**
+ * Web Routes for User
+ */
 Route::get('/user_list', function () {
     return view('users.user_list');
 })->name('user_list');
+
+Route::get('/edit_password', function () {
+    return view('users.edit_password');
+});
+
+
+/**
+ * Web Routes for Post
+ */
+Route::get('/post_list', function () {
+    return view('posts.post_list');
+})->name('post_list');
 
 Route::get('/create_post', function () {
     return view('posts.create');
@@ -35,11 +47,3 @@ Route::get('/update_post', function () {
 Route::get('/confirm_post', function () {
     return view('posts.confirm');
 });
-
-Route::get('/edit_password', function () {
-    return view('users.edit_password');
-});
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
