@@ -12,10 +12,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Users <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{route('user_list')}}">Users <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Posts</a>
+                        <a class="nav-link" href="{{route('post_list')}}">Posts</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-right">
