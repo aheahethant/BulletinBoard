@@ -25,6 +25,9 @@ Route::get('/user_list', function () {
 Route::get('/create_post', function () {
     return view('posts.create');
 });
+Route::get('/update_post', function () {
+    return view('posts.update');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
