@@ -21,6 +21,72 @@
                 </div>
             </form>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">User Detail</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container row clearfix">
+                            <div class="float-left col-sm-4">
+                                <img src="{{asset('storage_image/car.jpg')}}" alt="" width="100%">
+                            </div>
+                            <div class="float-right col-sm-8">
+                                <div class="row">
+                                    <label class="col-sm-5">Name</label>
+                                    <p class="col-sm-6">Admin</p>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-5">Type</label>
+                                    <p class="col-sm-6">Admin</p>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-5">Email</label>
+                                    <p class="col-sm-6">admin@gmail.com</p>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-5">Phone</label>
+                                    <p class="col-sm-6">09844554555</p>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-5">Date of Birth</label>
+                                    <p class="col-sm-6">1998/12/27</p>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-5">Address</label>
+                                    <p class="col-sm-6">Mandalay</p>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-5">Created Date</label>
+                                    <p class="col-sm-6">2020/11/05</p>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-5">Created User</label>
+                                    <p class="col-sm-6">Admin</p>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-5">Updated Date</label>
+                                    <p class="col-sm-6">2020/11/05</p>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-5">Updated User</label>
+                                    <p class="col-sm-6">Admin</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="table-responsive">
             <table id="datatable" class="table mt-3 col-12">
                 <thead>
@@ -40,7 +106,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
+                        <td data-toggle="modal" data-target="#exampleModal">1</td>
                         <td>Su Su</td>
                         <td>scm.test@gmail.com</td>
                         <td>admin</td>
@@ -55,7 +121,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>1</td>
+                        <td data-toggle="modal" data-target="#exampleModal">1</td>
                         <td>Su Su</td>
                         <td>scm.test@gmail.com</td>
                         <td>admin</td>
@@ -70,7 +136,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>1</td>
+                        <td data-toggle="modal" data-target="#exampleModal">1</td>
                         <td>Su Su</td>
                         <td>scm.test@gmail.com</td>
                         <td>admin</td>
@@ -85,7 +151,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>1</td>
+                        <td data-toggle="modal" data-target="#exampleModal">1</td>
                         <td>Su Su</td>
                         <td>scm.test@gmail.com</td>
                         <td>admin</td>
@@ -100,7 +166,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>1</td>
+                        <td data-toggle="modal" data-target="#exampleModal">1</td>
                         <td>Su Su</td>
                         <td>scm.test@gmail.com</td>
                         <td>admin</td>

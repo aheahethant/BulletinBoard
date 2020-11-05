@@ -12,7 +12,7 @@
                     <label class="mt-2">Keyword : </label>
                     <input type="text" class="col-sm-2">
                     <button type="submit" class="btn btn-primary col-sm-2 mt-1">Search</button>
-                    <a class="btn btn-primary col-sm-2 mt-1" href="#" role="button">Create</a>
+                    <a class="btn btn-primary col-sm-2 mt-1" href="{{ route('create_post') }}" role="button">Create</a>
                     <a class="btn btn-primary col-sm-2 mt-1" href="#" role="button">Upload</a>
                     <a class="btn btn-primary col-sm-2 mt-1" href="#" role="button">Download</a>
                 </div>
