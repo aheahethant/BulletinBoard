@@ -31,6 +31,9 @@ Route::get('/update_post', function () {
 Route::get('/confirm_post', function () {
     return view('posts.confirm');
 });
+Route::get('/edit_password', function () {
+    return view('users.edit_password');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
