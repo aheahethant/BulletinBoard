@@ -28,6 +28,9 @@ Route::get('/create_post', function () {
 Route::get('/update_post', function () {
     return view('posts.update');
 });
+Route::get('/confirm_post', function () {
+    return view('posts.confirm');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
