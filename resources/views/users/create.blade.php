@@ -15,15 +15,15 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">E-mail Address</label>
-                        <input type="text" class="form-control col-sm-7">
+                        <input type="email" class="form-control col-sm-7">
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Password</label>
-                        <input type="text" class="form-control col-sm-7">
+                        <input type="password" class="form-control col-sm-7">
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Confirm Password</label>
-                        <input type="text" class="form-control col-sm-7">
+                        <input type="password" class="form-control col-sm-7">
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Type</label>
@@ -42,7 +42,7 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Address</label>
-                        <textarea name="" id="" class="form-control col-sm-7"></textarea>
+                        <textarea class="form-control col-sm-7"></textarea>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Profile</label>

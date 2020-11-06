@@ -8,19 +8,19 @@
         </div>
         <div class="row pt-5">
             <div class="col-sm-10">
-            <form action="">
-                <div class="form-group row">
-                    <label for="" class="col-sm-4 text-right">CSV File</label>
-                    <input type="file" class="form-control col-sm-7">
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-4"></div>
-                    <div class="col-sm-7">
-                    <button type="submit" class="btn btn-primary">Upload</button>
-                    <button type="reset" class="btn btn-secondary">Clear</button>
+                <form action="">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 text-right">CSV File</label>
+                        <input type="file" class="form-control col-sm-7">
                     </div>
-                </div>
-            </form>
+                    <div class="form-group row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-7">
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                            <button type="reset" class="btn btn-secondary">Clear</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

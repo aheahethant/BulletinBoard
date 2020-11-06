@@ -15,7 +15,7 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">E-mail Address</label>
-                        <input type="text" class="form-control col-sm-7">
+                        <input type="email" class="form-control col-sm-7">
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Password</label>
@@ -42,13 +42,14 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Address</label>
-                        <textarea name="" id="" class="form-control col-sm-7"></textarea>
+                        <textarea class="form-control col-sm-7"></textarea>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Profile</label>
-                        <input type="file" class="form-control col-sm-7">
+                        <img src="{{asset('storage_image/car.jpg')}}" class="w-100 form-control col-sm-3 h-auto p-0"
+                            alt="">
                     </div>
-                    <div class="row">
+                    <div class="form-group row">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-7">
                             <button type="submit" class="btn btn-primary">Confirm</button>
