@@ -58,3 +58,7 @@ Route::get('/update_post', function () {
 Route::get('/confirm_post', function () {
     return view('posts.confirm');
 });
+
+Route::get('/upload_post', function () {
+    return view('posts.upload');
+})->name('upload_post');
