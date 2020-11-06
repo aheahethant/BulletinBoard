@@ -26,7 +26,7 @@ Route::get('/user_list', function () {
 
 Route::get('/edit_password', function () {
     return view('users.edit_password');
-});
+})->name('change_password');
 
 Route::get('/register', function () {
     return view('users.create');
@@ -35,6 +35,10 @@ Route::get('/register', function () {
 Route::get('/confirm_register', function () {
     return view('users.confirm');
 })->name('confirm_register');
+
+Route::get('/edit_user', function () {
+    return view('users.edit');
+})->name('edit_user');
 
 /**
  * Web Routes for Post
