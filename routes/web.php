@@ -28,6 +28,10 @@ Route::get('/edit_password', function () {
     return view('users.edit_password');
 });
 
+Route::get('/register',function(){
+    return view('users.create');
+})->name('register');
+
 
 /**
  * Web Routes for Post
