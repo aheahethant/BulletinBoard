@@ -37,7 +37,8 @@
                         <td>2020/11/04</td>
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#staticBackdrop">Delete</button>
                         </td>
                     </tr>
                     <tr>
@@ -47,7 +48,8 @@
                         <td>2020/11/04</td>
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#staticBackdrop">Delete</button>
                         </td>
                     </tr>
                     <tr>
@@ -57,7 +59,8 @@
                         <td>2020/11/04</td>
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#staticBackdrop">Delete</button>
                         </td>
                     </tr>
                     <tr>
@@ -67,7 +70,8 @@
                         <td>2020/11/04</td>
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#staticBackdrop">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -119,6 +123,44 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Post Delete -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Delete Confirm</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Are you sure to delete post?</h3>
+                <div class="row pt-4">
+                    <label class="col-sm-4">ID</label>
+                    <span class="col-sm-7" style="color:red;"><i>2</i></span>
+                </div>
+                <div class="row pt-4">
+                    <label class="col-sm-4">Title</label>
+                    <span class="col-sm-7" style="color:red;"><i>Post 2</i></span>
+                </div>
+                <div class="row pt-4">
+                    <label class="col-sm-4">Description</label>
+                    <span class="col-sm-7" style="color:red;"><i>Post Description</i></span>
+                </div>
+                <div class="row pt-4">
+                    <label class="col-sm-4">Status</label>
+                    <span class="col-sm-7" style="color:red;"><i>Active</i></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger">Delete</button>
             </div>
         </div>
     </div>
