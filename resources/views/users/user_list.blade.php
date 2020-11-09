@@ -118,7 +118,8 @@
                         <td>2020/11/04</td>
                         <td>2020/11/04</td>
                         <td>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#staticBackdrop">Delete</button>
                         </td>
                     </tr>
                     <tr>
@@ -133,7 +134,8 @@
                         <td>2020/11/04</td>
                         <td>2020/11/04</td>
                         <td>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#staticBackdrop">Delete</button>
                         </td>
                     </tr>
                     <tr>
@@ -148,7 +150,8 @@
                         <td>2020/11/04</td>
                         <td>2020/11/04</td>
                         <td>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#staticBackdrop">Delete</button>
                         </td>
                     </tr>
                     <tr>
@@ -163,7 +166,8 @@
                         <td>2020/11/04</td>
                         <td>2020/11/04</td>
                         <td>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#staticBackdrop">Delete</button>
                         </td>
                     </tr>
                     <tr>
@@ -178,7 +182,8 @@
                         <td>2020/11/04</td>
                         <td>2020/11/04</td>
                         <td>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#staticBackdrop">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -187,4 +192,52 @@
     </div>
 </div>
 
+<!-- Modal for User Delete -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Delete Confirm</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3 style="color:red;">Are you sure to delete user?</h3>
+                <div class="row pt-4">
+                    <label class="col-sm-4">ID</label>
+                    <span class="col-sm-7" style="color:red;"><i>2</i></span>
+                </div>
+                <div class="row pt-4">
+                    <label class="col-sm-4">Name</label>
+                    <span class="col-sm-7" style="color:red;"><i>Test User</i></span>
+                </div>
+                <div class="row pt-4">
+                    <label class="col-sm-4">Type</label>
+                    <span class="col-sm-7" style="color:red;"><i>User</i></span>
+                </div>
+                <div class="row pt-4">
+                    <label class="col-sm-4">Email</label>
+                    <span class="col-sm-7" style="color:red;"><i>user1@gmail.com</i></span>
+                </div>
+                <div class="row pt-4">
+                    <label class="col-sm-4">Phone</label>
+                    <span class="col-sm-7" style="color:red;"><i>0999999</i></span>
+                </div>
+                <div class="row pt-4">
+                    <label class="col-sm-4"></label>
+                    <span class="col-sm-7" style="color:red;"><i>2020-09-13</i></span>
+                </div>
+                <div class="row pt-4">
+                    <label class="col-sm-4">Address</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
