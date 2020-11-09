@@ -62,3 +62,14 @@ Route::get('/confirm_post', function () {
 Route::get('/upload_post', function () {
     return view('posts.upload');
 })->name('upload_post');
+
+/**
+ * Web Routes for Profile
+ */
+Route::get('/profile', function () {
+    return view('profiles.profile');
+})->name('profile');
+
+Route::get('/profile_edit', function () {
+    return view('profiles.edit');
+})->name('profile_edit');
