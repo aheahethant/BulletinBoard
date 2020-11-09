@@ -38,7 +38,7 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-4"></div>
-                        <a href="" class="col-sm-3 btn btn-primary">Edit Profile</a>
+                        <a href="{{route('profile_edit')}}" class="col-sm-3 btn btn-primary">Edit Profile</a>
                     </div>
                 </form>
             </div>

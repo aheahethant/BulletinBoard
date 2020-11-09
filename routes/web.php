@@ -69,3 +69,7 @@ Route::get('/upload_post', function () {
 Route::get('/profile', function () {
     return view('profiles.profile');
 })->name('profile');
+
+Route::get('/profile_edit', function () {
+    return view('profiles.edit');
+})->name('profile_edit');
