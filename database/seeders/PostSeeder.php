@@ -19,29 +19,20 @@ class PostSeeder extends Seeder
             [
             'title' => Str::random(10),
             'description' => Str::random(20),
-            'status' => 1,
             'create_user_id' => 1,
             'updated_user_id' => 1,
-            'deleted_user_id' => 1,
-            'deleted_at' => '9999-12-31 23:59:59',
         ],
             [
             'title' => Str::random(10),
             'description' => Str::random(20),
-            'status' => 1,
             'create_user_id' => 1,
             'updated_user_id' => 1,
-            'deleted_user_id' => 1,
-            'deleted_at' => '9999-12-31 23:59:59',
         ],
             [
             'title' => Str::random(10),
             'description' => Str::random(20),
-            'status' => 1,
             'create_user_id' => 1,
             'updated_user_id' => 1,
-            'deleted_user_id' => 1,
-            'deleted_at' => '9999-12-31 23:59:59',
         ]
         );
     }
