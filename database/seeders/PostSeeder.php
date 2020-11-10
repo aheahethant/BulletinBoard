@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class PostSeeder extends Seeder
 {
@@ -17,23 +16,27 @@ class PostSeeder extends Seeder
     {
         DB::table('posts')->insert(
             [
-            'title' => Str::random(10),
-            'description' => Str::random(20),
-            'create_user_id' => 1,
-            'updated_user_id' => 1,
-        ],
+                'title' => 'Hello World!',
+                'description' => 'A migration class contains two methods:',
+                'create_user_id' => 1,
+                'updated_user_id' => 1,
+            ]
+        );
+        DB::table('posts')->insert(
             [
-            'title' => Str::random(10),
-            'description' => Str::random(20),
-            'create_user_id' => 1,
-            'updated_user_id' => 1,
-        ],
+                'title' => 'PHP',
+                'description' => 'A migration class contains two methods:',
+                'create_user_id' => 1,
+                'updated_user_id' => 1,
+            ]
+        );
+        DB::table('posts')->insert(
             [
-            'title' => Str::random(10),
-            'description' => Str::random(20),
-            'create_user_id' => 1,
-            'updated_user_id' => 1,
-        ]
+                'title' => 'Java',
+                'description' => 'A migration class contains two methods:',
+                'create_user_id' => 1,
+                'updated_user_id' => 1,
+            ]
         );
     }
 }

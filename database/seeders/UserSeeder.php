@@ -18,8 +18,20 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert(
             [
-            'name' => Str::random(3),
-            'email' => Str::random(3).'@gmail.com',
+                'name' => 'Aung Aung',
+                'email' => 'aungaung@gmail.com',
+                'password' => Hash::make('password'),
+                'profile' => '',
+                'phone' => '092334555',
+                'address' => 'Mandalay',
+                'dob' => '1998/12/27',
+                'create_user_id' => 1,
+                'updated_user_id' => 1,
+            ]
+        );
+        DB::table('users')->insert([
+            'name' => 'Su Su',
+            'email' => 'susu@gmail.com',
             'password' => Hash::make('password'),
             'profile' => '',
             'phone' => '092334555',
@@ -27,29 +39,19 @@ class UserSeeder extends Seeder
             'dob' => '1998/12/27',
             'create_user_id' => 1,
             'updated_user_id' => 1,
-        ],
+        ]);
+        DB::table('users')->insert(
             [
-            'name' => Str::random(5),
-            'email' => Str::random(5).'@gmail.com',
-            'password' => Hash::make('password'),
-            'profile' => '',
-            'phone' => '092334555',
-            'address' => 'Mandalay',
-            'dob' => '1998/12/27',
-            'create_user_id' => 1,
-            'updated_user_id' => 1,
-        ],
-            [
-            'name' => Str::random(3),
-            'email' => Str::random(3).'@gmail.com',
-            'password' => Hash::make('password'),
-            'profile' => '',
-            'phone' => '092334555',
-            'address' => 'Mandalay',
-            'dob' => '1998/12/27',
-            'create_user_id' => 1,
-            'updated_user_id' => 1,
-        ]
+                'name' => 'Nandar',
+                'email' => 'nandar@gmail.com',
+                'password' => Hash::make('password'),
+                'profile' => '',
+                'phone' => '092334555',
+                'address' => 'Mandalay',
+                'dob' => '1998/12/27',
+                'create_user_id' => 1,
+                'updated_user_id' => 1,
+            ]
         );
     }
 }
