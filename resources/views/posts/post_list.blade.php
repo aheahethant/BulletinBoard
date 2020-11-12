@@ -28,7 +28,9 @@
                         <th scope="col">Post Description</th>
                         <th scope="col">Posted User</th>
                         <th scope="col">Posted Date</th>
+                        @if( Auth::check() )
                         <th scope="col">Operation</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -37,40 +39,48 @@
                         <td>Hello World!</td>
                         <td>admin</td>
                         <td>2020/11/04</td>
+                        @if( Auth::check() )
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
                         </td>
+                        @endif
                     </tr>
                     <tr>
                         <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Post3</td>
                         <td>Hello World!</td>
                         <td>admin</td>
                         <td>2020/11/04</td>
+                        @if( Auth::check() )
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
                         </td>
+                        @endif
                     </tr>
                     <tr>
                         <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Post3</td>
                         <td>Hello World!</td>
                         <td>admin</td>
                         <td>2020/11/04</td>
+                        @if( Auth::check() )
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
                         </td>
+                        @endif
                     </tr>
                     <tr>
                         <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Post3</td>
                         <td>Hello World!</td>
                         <td>admin</td>
                         <td>2020/11/04</td>
+                        @if( Auth::check() )
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
                         </td>
+                        @endif
                     </tr>
                 </tbody>
             </table>
