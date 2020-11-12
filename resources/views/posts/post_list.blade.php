@@ -13,7 +13,7 @@
                     <input type="text" class="col-sm-2">
                     <button type="submit" class="btn btn-primary col-sm-2 mt-1">Search</button>
                     <a class="btn btn-primary col-sm-2 mt-1" href="{{ route('create_post') }}" role="button">Create</a>
-                    <a class="btn btn-primary col-sm-2 mt-1" href="#" role="button">Upload</a>
+                    <a class="btn btn-primary col-sm-2 mt-1" href="{{ route('upload_post') }}" role="button">Upload</a>
                     <a class="btn btn-primary col-sm-2 mt-1" href="#" role="button">Download</a>
                 </div>
             </form>
@@ -37,8 +37,7 @@
                         <td>2020/11/04</td>
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#staticBackdrop">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
                         </td>
                     </tr>
                     <tr>
@@ -48,8 +47,7 @@
                         <td>2020/11/04</td>
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#staticBackdrop">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
                         </td>
                     </tr>
                     <tr>
@@ -59,8 +57,7 @@
                         <td>2020/11/04</td>
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#staticBackdrop">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
                         </td>
                     </tr>
                     <tr>
@@ -70,8 +67,7 @@
                         <td>2020/11/04</td>
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#staticBackdrop">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -129,8 +125,7 @@
 </div>
 
 <!-- Modal for Post Delete -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

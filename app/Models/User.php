@@ -27,6 +27,15 @@ class User extends Authenticatable
         'dob',
     ];
 
+    public function isAdmin()
+    {
+        return $this->users()->where('type', '0')->exists();
+    }
+    public function isUser()
+    {
+        return $this->users()->where('type', '1')->exists();
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
