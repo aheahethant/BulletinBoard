@@ -6,14 +6,16 @@
         <p class="font-weight-bold">Post List</p>
     </div>
     <div class="container">
-        <div class="row mt-3 float-right">
-            <form>
+        <div class="mt-3">
+            <form class="float-right col-sm-10 ">
                 <div class="form-row d-flex justify-content-between">
                     <label class="mt-2">Keyword : </label>
-                    <input type="text" class="col-sm-2">
+                    <input type="text" class="col-sm-2 mt-1">
                     <button type="submit" class="btn btn-primary col-sm-2 mt-1">Search</button>
+                    @if (Auth::check())
                     <a class="btn btn-primary col-sm-2 mt-1" href="{{ route('create_post') }}" role="button">Create</a>
-                    <a class="btn btn-primary col-sm-2 mt-1" href="#" role="button">Upload</a>
+                    <a class="btn btn-primary col-sm-2 mt-1" href="{{ route('upload_post') }}" role="button">Upload</a>
+                    @endif
                     <a class="btn btn-primary col-sm-2 mt-1" href="#" role="button">Download</a>
                 </div>
             </form>
@@ -26,7 +28,9 @@
                         <th scope="col">Post Description</th>
                         <th scope="col">Posted User</th>
                         <th scope="col">Posted Date</th>
+                        @if( Auth::check() )
                         <th scope="col">Operation</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -35,44 +39,48 @@
                         <td>Hello World!</td>
                         <td>admin</td>
                         <td>2020/11/04</td>
+                        @if( Auth::check() )
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#staticBackdrop">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
                         </td>
+                        @endif
                     </tr>
                     <tr>
                         <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Post3</td>
                         <td>Hello World!</td>
                         <td>admin</td>
                         <td>2020/11/04</td>
+                        @if( Auth::check() )
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#staticBackdrop">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
                         </td>
+                        @endif
                     </tr>
                     <tr>
                         <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Post3</td>
                         <td>Hello World!</td>
                         <td>admin</td>
                         <td>2020/11/04</td>
+                        @if( Auth::check() )
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#staticBackdrop">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
                         </td>
+                        @endif
                     </tr>
                     <tr>
                         <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Post3</td>
                         <td>Hello World!</td>
                         <td>admin</td>
                         <td>2020/11/04</td>
+                        @if( Auth::check() )
                         <td>
                             <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#staticBackdrop">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
                         </td>
+                        @endif
                     </tr>
                 </tbody>
             </table>
@@ -129,8 +137,7 @@
 </div>
 
 <!-- Modal for Post Delete -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

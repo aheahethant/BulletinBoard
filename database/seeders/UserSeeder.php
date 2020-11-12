@@ -19,9 +19,10 @@ class UserSeeder extends Seeder
         DB::table('users')->insert(
             [
                 'name' => 'Aung Aung',
-                'email' => 'aungaung@gmail.com',
+                'email' => 'scm.aheahethant@gmail.com',
                 'password' => Hash::make('password'),
                 'profile' => '',
+                'type' => 0,
                 'phone' => '092334555',
                 'address' => 'Mandalay',
                 'dob' => '1998/12/27',
@@ -31,9 +32,10 @@ class UserSeeder extends Seeder
         );
         DB::table('users')->insert([
             'name' => 'Su Su',
-            'email' => 'susu@gmail.com',
+            'email' => 'aheahethant8450@gmail.com',
             'password' => Hash::make('password'),
             'profile' => '',
+            'type' => 1,
             'phone' => '092334555',
             'address' => 'Mandalay',
             'dob' => '1998/12/27',
@@ -43,9 +45,10 @@ class UserSeeder extends Seeder
         DB::table('users')->insert(
             [
                 'name' => 'Nandar',
-                'email' => 'nandar@gmail.com',
+                'email' => 'scm.aungpyaesone@gmail.com',
                 'password' => Hash::make('password'),
                 'profile' => '',
+                'type' => 1,
                 'phone' => '092334555',
                 'address' => 'Mandalay',
                 'dob' => '1998/12/27',
