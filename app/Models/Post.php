@@ -13,5 +13,12 @@ class Post extends Model
         'title',
         'description',
         'status',
+        'create_user_id',
+        'updated_user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'create_user_id');
+    }
 }

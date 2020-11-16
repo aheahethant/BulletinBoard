@@ -25,16 +25,9 @@ class User extends Authenticatable
         'phone',
         'address',
         'dob',
+        'create_user_id',
+        'updated_user_id',
     ];
-
-    public function isAdmin()
-    {
-        return $this->users()->where('type', '0')->exists();
-    }
-    public function isUser()
-    {
-        return $this->users()->where('type', '1')->exists();
-    }
 
     /**
      * The attributes that should be hidden for arrays.
