@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Dao;
+namespace App\Dao\Post;
 
-use App\Contracts\Dao\PostDaoInterface;
+use App\Contracts\Dao\Post\PostDaoInterface;
 use App\Models\Post;
 
 class PostDao implements PostDaoInterface

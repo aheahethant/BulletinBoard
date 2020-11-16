@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Post;
 
-use App\Contracts\Dao\PostDaoInterface;
-use App\contracts\Services\PostServiceInterface;
+use App\Contracts\Dao\Post\PostDaoInterface;
+use App\contracts\Services\Post\PostServiceInterface;
 
 class PostService implements PostServiceInterface
 {
@@ -12,7 +12,6 @@ class PostService implements PostServiceInterface
     /**
      * Class Constructor
      * @param OperatorPostDaoInterface
-     * @return
      */
     public function __construct(PostDaoInterface $postDao)
     {
@@ -22,7 +21,7 @@ class PostService implements PostServiceInterface
     /**
      * Get Post List
      * @param Object
-     * @return $postList
+     * @return array $postList
      */
     public function getPostList()
     {

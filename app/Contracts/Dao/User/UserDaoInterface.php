@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Contracts\Dao;
+namespace App\Contracts\Dao\User;
 
 interface UserDaoInterface
 {
