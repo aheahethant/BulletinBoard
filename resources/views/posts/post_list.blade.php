@@ -38,7 +38,7 @@
                     <tr>
                         <td data-toggle="modal" data-target="#exampleModal" style="color:red;">{{$row->title}}</td>
                         <td>{{$row->description}}</td>
-                        <td>{{$row->getUserName()}}</td>
+                        <td>{{$row->user->name}}</td>
                         <td>{{$row->created_at}}</td>
                         @if( Auth::check() )
                         <td>

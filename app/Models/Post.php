@@ -17,13 +17,8 @@ class Post extends Model
         'updated_user_id',
     ];
 
-    public function getUserName()
-    {
-        return User::where('id', $this->create_user_id)->first()->name;
-    }
-
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'foreign_key');
+        return $this->belongsTo('App\Models\User', 'create_user_id');
     }
 }
