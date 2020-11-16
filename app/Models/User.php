@@ -25,15 +25,13 @@ class User extends Authenticatable
         'phone',
         'address',
         'dob',
+        'create_user_id',
+        'updated_user_id',
     ];
 
-    public function isAdmin()
+    public function post()
     {
-        return $this->users()->where('type', '0')->exists();
-    }
-    public function isUser()
-    {
-        return $this->users()->where('type', '1')->exists();
+        return $this->hasMany('App\Models\Post');
     }
 
     /**

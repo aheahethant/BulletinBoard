@@ -1,5 +1,6 @@
 <?php
 
+use Doctrine\DBAL\Schema\Index;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,13 +15,12 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('posts.post_list');
-})->name('main');
+Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('main');
+
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
     Auth::routes();
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\PostController::class, 'index'])->name('home');
 
 
     /**
@@ -32,7 +32,11 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Route::get('/edit_password', function () {
         return view('users.edit_password');
-    })->name('change_password');
+    })->middleware('auth')->name('change_password');
+
+    Route::get('/edit_user', function () {
+        return view('users.edit');
+    })->middleware('auth')->name('edit_user');
 
     Route::get('/register', function () {
         return view('users.create');
@@ -42,16 +46,10 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         return view('users.confirm');
     })->name('confirm_register');
 
-    Route::get('/edit_user', function () {
-        return view('users.edit');
-    })->middleware('auth')->name('edit_user');
-
     /**
      * Web Routes for Post
      */
-    Route::get('/post_list', function () {
-        return view('posts.post_list');
-    })->middleware('auth')->name('post_list');
+    Route::get('/post_list', [App\Http\Controllers\PostController::class, 'index'])->middleware('auth')->name('post_list');
 
     Route::get('/create_post', function () {
         return view('posts.create');
@@ -63,7 +61,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Route::get('/confirm_post', function () {
         return view('posts.confirm');
-    });
+    })->middleware('auth');
 
     Route::get('/upload_post', function () {
         return view('posts.upload');
