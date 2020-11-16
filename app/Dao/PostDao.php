@@ -7,6 +7,11 @@ use App\Models\Post;
 
 class PostDao implements PostDaoInterface
 {
+    /**
+     * post List
+     * @param Object
+     * @return $postList
+     */
     public function getPostList()
     {
         $posts = Post::all();
