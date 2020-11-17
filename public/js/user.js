@@ -1,3 +1,7 @@
+var created_date_column = 8;
+var name_column = 1;
+var email_column = 2;
+
 /**
  * Date Filter
  */
@@ -8,7 +12,6 @@ $.fn.dataTableExt.afnFiltering.push(
         }
         var dateStart = moment($("#from_date").val(), "YYYY-MM-DD").valueOf();
         var dateEnd = moment($("#to_date").val(), "YYYY-MM-DD").valueOf();
-        var created_date_column = 8;
         var evalDate = moment(aData[created_date_column], "YYYY/MM/DD").valueOf();
         if (evalDate >= dateStart && evalDate <= dateEnd) {
             return true;
@@ -40,8 +43,6 @@ $(document).ready(function () {
     $('#btnSearch').click(function () {
         var searchName = $('#name').val();
         var searchEmail = $('#email').val();
-        var name_column = 1;
-        var email_column = 2;
         table.columns(name_column).search(searchName).draw();
         table.columns(email_column).search(searchEmail).draw();
     });
