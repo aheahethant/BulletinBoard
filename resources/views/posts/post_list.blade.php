@@ -1,27 +1,33 @@
 @extends('layouts.app')
 @section('content')
 
+<!-- link -->
+<link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
+
+<!-- script -->
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/post.js') }}"></script>
+
 <div class="container-fluid mt-4">
     <div class="container">
         <p class="font-weight-bold">Post List</p>
     </div>
     <div class="container">
-        <div class="mt-3">
-            <form class="float-right col-sm-10 ">
-                <div class="form-row d-flex justify-content-between">
-                    <label class="mt-2">Keyword : </label>
-                    <input type="text" class="col-sm-2 mt-1">
-                    <button type="submit" class="btn btn-primary col-sm-2 mt-1">Search</button>
-                    @if (Auth::check())
-                    <a class="btn btn-primary col-sm-2 mt-1" href="{{ route('create_post') }}" role="button">Create</a>
-                    <a class="btn btn-primary col-sm-2 mt-1" href="{{ route('upload_post') }}" role="button">Upload</a>
-                    @endif
-                    <a class="btn btn-primary col-sm-2 mt-1" href="#" role="button">Download</a>
-                </div>
-            </form>
+        <div class="mt-3 float-right col-sm-10">
+            <div class="form-row d-flex justify-content-between">
+                <label class="mt-2">Keyword : </label>
+                <input type="text" class="col-sm-2 mt-1" id="post_search">
+                <button class="btn btn-primary col-sm-2 mt-1" id="btnSearch">Search</button>
+                @if (Auth::check())
+                <a class="btn btn-primary col-sm-2 mt-1" href="{{ route('create_post') }}" role="button">Create</a>
+                <a class="btn btn-primary col-sm-2 mt-1" href="{{ route('upload_post') }}" role="button">Upload</a>
+                @endif
+                <a class="btn btn-primary col-sm-2 mt-1" href="#" role="button">Download</a>
+            </div>
         </div>
         <div class="table-responsive">
-            <table id="datatable" class="table mt-3 col-12">
+            <table id="post_list" class="table mt-3 col-12">
                 <thead>
                     <tr>
                         <th scope="col">Post Title</th>
