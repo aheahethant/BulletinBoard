@@ -1,25 +1,32 @@
 @extends('layouts.app')
 @section('content')
 
+<!-- link -->
+<link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
+
+<!-- script -->
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/user.js') }}"></script>
+<script src="{{ asset('js/moment.min.js') }}"></script>
+
 <div class="container-fluid mt-4">
     <div class="container">
         <p class="font-weight-bold">User List</p>
     </div>
     <div class="container">
         <div class="row mt-3 float-right">
-            <form>
-                <div class="form-row d-flex justify-content-between">
-                    <label for="name" class="pt-2">Name : </label>
-                    <input type="text" id="name" name="" class="col-sm-2">
-                    <label for="email" class="pt-2">Email : </label>
-                    <input type="email" name="" id="email" class="col-sm-2">
-                    <label for="from_date" class="pt-2">From : </label>
-                    <input type="date" name="" id="from_date" class="col-sm-2">
-                    <label for="to_date" class="pt-2">To : </label>
-                    <input type="date" name="" id="to_date" class="col-sm-2">
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </div>
-            </form>
+            <div class="form-row d-flex justify-content-between">
+                <label for="name" class="pt-2">Name : </label>
+                <input type="text" id="name" class="col-sm-2">
+                <label for="email" class="pt-2">Email : </label>
+                <input type="email" id="email" class="col-sm-2">
+                <label for="from_date" class="pt-2">From : </label>
+                <input type="date" id="from_date" class="col-sm-2">
+                <label for="to_date" class="pt-2">To : </label>
+                <input type="date" id="to_date" class="col-sm-2">
+                <button class="btn btn-primary" id="btnSearch">Search</button>
+            </div>
         </div>
 
         <!-- Modal -->
@@ -89,7 +96,7 @@
         </div>
 
         <div class="table-responsive">
-            <table id="datatable" class="table mt-3 col-12">
+            <table id="user_list" class="table mt-3 col-12">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -106,86 +113,23 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($users as $row)
                     <tr>
-                        <td>1</td>
-                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Su Su</td>
-                        <td>scm.test@gmail.com</td>
-                        <td>admin</td>
-                        <td>admin</td>
-                        <td>098654231</td>
-                        <td>1998/12/27</td>
-                        <td>Mandalay</td>
-                        <td>2020/11/04</td>
-                        <td>2020/11/04</td>
+                        <td>{{$row->id}}</td>
+                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">{{$row->name}}</td>
+                        <td>{{$row->email}}</td>
+                        <td>{{$row->user->name}}</td>
+                        <td>{{$row->type}}</td>
+                        <td>{{$row->phone}}</td>
+                        <td>{{$row->dob}}</td>
+                        <td>{{$row->address}}</td>
+                        <td>{{$row->created_at}}</td>
+                        <td>{{$row->updated_at}}</td>
                         <td>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#staticBackdrop">Delete</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Su Su</td>
-                        <td>scm.test@gmail.com</td>
-                        <td>admin</td>
-                        <td>admin</td>
-                        <td>098654231</td>
-                        <td>1998/12/27</td>
-                        <td>Mandalay</td>
-                        <td>2020/11/04</td>
-                        <td>2020/11/04</td>
-                        <td>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#staticBackdrop">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Su Su</td>
-                        <td>scm.test@gmail.com</td>
-                        <td>admin</td>
-                        <td>admin</td>
-                        <td>098654231</td>
-                        <td>1998/12/27</td>
-                        <td>Mandalay</td>
-                        <td>2020/11/04</td>
-                        <td>2020/11/04</td>
-                        <td>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#staticBackdrop">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Su Su</td>
-                        <td>scm.test@gmail.com</td>
-                        <td>admin</td>
-                        <td>admin</td>
-                        <td>098654231</td>
-                        <td>1998/12/27</td>
-                        <td>Mandalay</td>
-                        <td>2020/11/04</td>
-                        <td>2020/11/04</td>
-                        <td>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#staticBackdrop">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">Su Su</td>
-                        <td>scm.test@gmail.com</td>
-                        <td>admin</td>
-                        <td>admin</td>
-                        <td>098654231</td>
-                        <td>1998/12/27</td>
-                        <td>Mandalay</td>
-                        <td>2020/11/04</td>
-                        <td>2020/11/04</td>
-                        <td>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#staticBackdrop">Delete</button>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -193,8 +137,7 @@
 </div>
 
 <!-- Modal for User Delete -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

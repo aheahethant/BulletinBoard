@@ -26,9 +26,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     /**
      * Web Routes for User
      */
-    Route::get('/user_list', function () {
-        return view('users.user_list');
-    })->middleware('auth')->name('user_list');
+    Route::get('/user_list', [App\Http\Controllers\UserController::class, 'getUserList'])->middleware('auth')->name('user_list');
 
     Route::get('/edit_password', function () {
         return view('users.edit_password');

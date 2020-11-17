@@ -29,6 +29,11 @@ class User extends Authenticatable
         'updated_user_id',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'create_user_id');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
