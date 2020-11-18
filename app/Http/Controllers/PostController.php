@@ -34,6 +34,8 @@ class PostController extends Controller
 
     /**
      * save post 
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function savePost(Request $request)
     {
@@ -52,6 +54,8 @@ class PostController extends Controller
 
     /**
      * get post id
+     * @param mixed $id
+     * @return view
      */
     public function getPostById($id)
     {
@@ -61,6 +65,9 @@ class PostController extends Controller
 
     /**
      * update post
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function updatePost(Request $request, $id)
     {

@@ -11,7 +11,6 @@ class PostDao implements PostDaoInterface
 {
     /**
      * post List
-     * @param Object
      * @return $postList
      */
     public function getPostList()
@@ -22,6 +21,7 @@ class PostDao implements PostDaoInterface
 
     /**
      * save post
+     * @param \Illuminate\Http\Request $request
      */
     public function savePost($request)
     {
@@ -36,6 +36,7 @@ class PostDao implements PostDaoInterface
     /**
      * get post id
      * @return postbyid
+     * @param mixed $id
      */
     public function getPostById($id)
     {
@@ -44,6 +45,8 @@ class PostDao implements PostDaoInterface
 
     /**
      * update post
+     * @param Illuminate\Http\Request $request
+     * @return void
      */
     public function updatePost($request, $id)
     {

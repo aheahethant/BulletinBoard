@@ -41,6 +41,7 @@ class PostService implements PostServiceInterface
 
     /**
      * get post id
+     * @param mixed $id
      */
     public function getPostById($id)
     {
@@ -49,6 +50,8 @@ class PostService implements PostServiceInterface
 
     /**
      * update post
+     * @param \Illuminate\Http\Request $request
+     * @return array — post
      */
     public function updatePost($request, $id)
     {
