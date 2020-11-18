@@ -13,4 +13,14 @@ interface PostDaoInterface
      * save post
      */
     public function savePost($request);
+    
+    /**
+     * get post id
+     */
+    public function getPostById($id);
+    
+    /**
+     * update post
+     */
+    public function updatePost($request, $id);
 }

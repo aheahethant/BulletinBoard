@@ -15,4 +15,14 @@ interface PostServiceInterface
      * @param \Illuminate\Http\Request $request
      */
     public function savePost($request);
+
+    /**
+     * get post id
+     */
+    public function getPostById($id);
+
+    /**
+     * update post
+     */
+    public function updatePost($request, $id);
 }

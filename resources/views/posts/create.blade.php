@@ -19,8 +19,8 @@
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Description<span style="color:red;">*</span></label>
                         <textarea name="description" class="col-sm-7"></textarea>
-                        @if ($errors->has('title'))
-                        <span class="form-text text-danger">{{ $errors->first('title') }}</span>
+                        @if ($errors->has('description'))
+                        <span class="form-text text-danger">{{ $errors->first('description') }}</span>
                         @endif
                     </div>
                     <div class="row">

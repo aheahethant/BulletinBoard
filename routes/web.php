@@ -58,9 +58,9 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         return view('posts.create');
     })->middleware('auth')->name('create_post');
 
-    Route::get('/update_post', function () {
-        return view('posts.update');
-    })->middleware('auth')->name('update_post');
+    Route::get('/edit_post/{id}', [PostController::class, 'getPostById'])->middleware('auth')->name('edit_post');
+
+    Route::put('/update_post/{id}', [PostController::class, 'updatePost'])->middleware('auth')->name('update_post');
 
     Route::get('/confirm_post', function () {
         return view('posts.confirm');

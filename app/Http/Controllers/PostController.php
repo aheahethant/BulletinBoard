@@ -49,4 +49,31 @@ class PostController extends Controller
         $this->postInterface->savePost($request);
         return redirect()->route('post_list');
     }
+
+    /**
+     * get post id
+     */
+    public function getPostById($id)
+    {
+        $post = $this->postInterface->getPostById($id);
+        return view('posts.update', compact('post'));
+    }
+
+    /**
+     * update post
+     */
+    public function updatePost(Request $request, $id)
+    {
+        $rules = [
+            'title' => 'required|min:3|max:255',
+            'description' => 'required|min:3|max:255',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        $this->postInterface->updatePost($request, $id);
+        return redirect()->route('post_list');
+    }
 }

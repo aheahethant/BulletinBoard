@@ -48,7 +48,7 @@
                         <td>{{$row->created_at}}</td>
                         @if( Auth::check() )
                         <td>
-                            <a href="{{route('update_post')}}" class="btn btn-primary">Edit</a>
+                            <a href="{{route('edit_post', $row->id)}}" class="btn btn-primary">Edit</a>
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
                         </td>
                         @endif
