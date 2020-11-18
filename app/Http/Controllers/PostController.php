@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Contracts\Services\Post\PostServiceInterface;
-use App\Models\Post;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
-
     private $postInterface;
 
     /**
@@ -30,5 +30,23 @@ class PostController extends Controller
     public function index()
     {
         return $this->postInterface->getPostList();
+    }
+
+    /**
+     * save post 
+     */
+    public function savePost(Request $request)
+    {
+        $rules = [
+            'confirm_title' => 'required|min:3|max:255',
+            'confirm_description' => 'required|min:3|max:255',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        $this->postInterface->savePost($request);
+        return redirect()->route('post_list');
     }
 }

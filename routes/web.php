@@ -1,8 +1,11 @@
 <?php
 
 use Doctrine\DBAL\Schema\Index;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,18 +18,18 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('main');
+Route::get('/', [PostController::class, 'index'])->name('main');
 
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
     Auth::routes();
-    Route::get('/home', [App\Http\Controllers\PostController::class, 'index'])->name('home');
+    Route::get('/home', [PostController::class, 'index'])->name('home');
 
 
     /**
      * Web Routes for User
      */
-    Route::get('/user_list', [App\Http\Controllers\UserController::class, 'getUserList'])->middleware('auth')->name('user_list');
+    Route::get('/user_list', [UserController::class, 'getUserList'])->middleware('auth')->name('user_list');
 
     Route::get('/edit_password', function () {
         return view('users.edit_password');
@@ -47,7 +50,9 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     /**
      * Web Routes for Post
      */
-    Route::get('/post_list', [App\Http\Controllers\PostController::class, 'index'])->middleware('auth')->name('post_list');
+    Route::get('/post_list', [PostController::class, 'index'])->middleware('auth')->name('post_list');
+
+    Route::post('/save_post', [PostController::class, 'savePost'])->middleware('auth')->name('save_post');
 
     Route::get('/create_post', function () {
         return view('posts.create');
@@ -59,7 +64,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Route::get('/confirm_post', function () {
         return view('posts.confirm');
-    })->middleware('auth');
+    })->middleware('auth')->name('confirm_post');
 
     Route::get('/upload_post', function () {
         return view('posts.upload');

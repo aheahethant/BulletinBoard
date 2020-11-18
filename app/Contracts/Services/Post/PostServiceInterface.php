@@ -9,4 +9,10 @@ interface PostServiceInterface
      * @return array postList
      */
     public function getPostList();
+    
+    /**
+     * save post
+     * @param \Illuminate\Http\Request $request
+     */
+    public function savePost($request);
 }
