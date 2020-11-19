@@ -27,7 +27,11 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Status</label>
+                        @if($post->status == 1)
                         <input type="checkbox" name="status" checked="checked">
+                        @else
+                        <input type="checkbox" name="status">
+                        @endif
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-4"></div>

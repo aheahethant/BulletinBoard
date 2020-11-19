@@ -42,6 +42,7 @@ class PostController extends Controller
         $rules = [
             'confirm_title' => 'required|min:3|max:255',
             'confirm_description' => 'required|min:3|max:255',
+            'status' => '',
         ];
         $validator = Validator::make($request->all(), $rules);
 

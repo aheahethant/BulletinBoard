@@ -4,6 +4,7 @@ namespace App\Services\User;
 
 use App\Contracts\Services\User\UserServiceInterface;
 use App\Contracts\Dao\User\UserDaoInterface;
+use GuzzleHttp\Psr7\Request;
 
 class UserService implements UserServiceInterface
 {
@@ -27,4 +28,31 @@ class UserService implements UserServiceInterface
     {
         return $this->userDao->getUserList();
     }    
+
+    /**
+     * save User
+     * @param \Illuminate\Http\Request $request
+     */
+    public function saveUser($request)
+    {
+        return $this->userDao->saveUser($request);
+    }
+
+    /**
+     * get User by Id
+     * @param int $id
+     */
+    public function getUserById($id)
+    {
+        return $this->userDao->getUserById($id);
+    }
+
+    /**
+     * update User
+     * 
+     */
+    public function updateUser($request,$id)
+    {
+        return $this->userDao->updateUser($request,$id);
+    }
 }

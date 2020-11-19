@@ -20,11 +20,14 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', [PostController::class, 'index'])->name('main');
 
+Route::post('/confirm_register', [UserController::class, 'createUser'])->name('confirm_register');
+
+Route::post('/save_user', [UserController::class, 'saveUser'])->name('save_user');
+
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
     Auth::routes();
     Route::get('/home', [PostController::class, 'index'])->name('home');
-
 
     /**
      * Web Routes for User
@@ -35,17 +38,14 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         return view('users.edit_password');
     })->middleware('auth')->name('change_password');
 
-    Route::get('/edit_user', function () {
-        return view('users.edit');
-    })->middleware('auth')->name('edit_user');
+    Route::get('/edit_user/{id}', [UserController::class, 'editUser'])->middleware('auth')->name('edit_user');
+
+    Route::put('/update_user/{id}', [UserController::class, 'updateUser'])->middleware('auth')->name('update_user');
 
     Route::get('/register', function () {
         return view('users.create');
     })->name('register');
 
-    Route::get('/confirm_register', function () {
-        return view('users.confirm');
-    })->name('confirm_register');
 
     /**
      * Web Routes for Post

@@ -126,7 +126,10 @@
                         <td>{{$row->created_at}}</td>
                         <td>{{$row->updated_at}}</td>
                         <td>
+                            <div class="d-flex justify-content-between">
+                            <a href="{{route('edit_user', $row->id)}}" class="btn btn-primary">Edit</a>
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
+                            </div>
                         </td>
                     </tr>
                     @endforeach

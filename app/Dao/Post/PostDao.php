@@ -50,9 +50,16 @@ class PostDao implements PostDaoInterface
      */
     public function updatePost($request, $id)
     {
+        if ($request->status == 'checked') {
+            $result = $request->status = 1;
+        } else {
+            $result = $request->status = 0;
+        }
+
         $post = Post::find($id);
         $post->title = $request->title;
         $post->description = $request->description;
+        $post->status = $result;
         $post->updated_user_id = Auth::user()->id;
         $post->save();
     }
