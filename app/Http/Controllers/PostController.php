@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Contracts\Services\Post\PostServiceInterface;
-use App\Models\Post;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
-
     private $postInterface;
 
     /**
@@ -30,5 +30,57 @@ class PostController extends Controller
     public function index()
     {
         return $this->postInterface->getPostList();
+    }
+
+    /**
+     * save post 
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function savePost(Request $request)
+    {
+        $rules = [
+            'confirm_title' => 'required|min:3|max:255',
+            'confirm_description' => 'required|min:3|max:255',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        $this->postInterface->savePost($request);
+        return redirect()->route('post_list');
+    }
+
+    /**
+     * get post id
+     * @param mixed $id
+     * @return view
+     */
+    public function getPostById($id)
+    {
+        $post = $this->postInterface->getPostById($id);
+        return view('posts.update', compact('post'));
+    }
+
+    /**
+     * update post
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updatePost(Request $request, $id)
+    {
+        $rules = [
+            'title' => 'required|min:3|max:255',
+            'description' => 'required|min:3|max:255',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        $this->postInterface->updatePost($request, $id);
+        return redirect()->route('post_list');
     }
 }

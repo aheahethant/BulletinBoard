@@ -27,4 +27,34 @@ class PostService implements PostServiceInterface
     {
         return $this->postDao->getPostList();
     }
+
+    /**
+     * save post
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return void
+     */
+    public function savePost($request)
+    {
+        $this->postDao->savePost($request);
+    }
+
+    /**
+     * get post id
+     * @param mixed $id
+     */
+    public function getPostById($id)
+    {
+        return $this->postDao->getPostById($id);
+    }
+
+    /**
+     * update post
+     * @param \Illuminate\Http\Request $request
+     * @return array — post
+     */
+    public function updatePost($request, $id)
+    {
+        return $this->postDao->updatePost($request,$id);
+    }
 }
