@@ -46,4 +46,18 @@ $(document).ready(function () {
         table.columns(name_column).search(searchName).draw();
         table.columns(email_column).search(searchEmail).draw();
     });
+    
+    $("#userInfo").on("show.bs.modal", function(e) {
+        var id = $(e.relatedTarget).data('id');
+        var name = $(e.relatedTarget).data('name');
+        var type = $(e.relatedTarget).data('type');
+        var email = $(e.relatedTarget).data('email');
+        var phone = $(e.relatedTarget).data('phone');
+        var dob = $(e.relatedTarget).data('dob');
+        var address = $(e.relatedTarget).data('address');
+        $.get("{{route('detail_user')}}" + id + name + type + email + phone + dob + address, function(
+            data) {
+            $(".modal-body").html(data);
+        });
+    });
 });

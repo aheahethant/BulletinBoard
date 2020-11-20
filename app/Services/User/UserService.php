@@ -55,4 +55,29 @@ class UserService implements UserServiceInterface
     {
         return $this->userDao->updateUser($request,$id);
     }
+
+    /**
+     * change password
+     * @param \Illuminate\Http\Request $request
+     */
+    public function changePassword($request)
+    {
+        return $this->userDao->changePassword($request);
+    }
+
+    /**
+     * detail User
+     */
+    public function detailUser($id)
+    {
+        return $this->userDao->detailUser($id);
+    }
+
+    /**
+     * delete user by id
+     */
+    public function deleteUserById($id)
+    {
+        return $this->userDao->deleteUserById($id);
+    }
 }

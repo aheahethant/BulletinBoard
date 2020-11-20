@@ -91,4 +91,33 @@ class UserDao implements UserDaoInterface
         $user->updated_user_id = Auth::user()->id;
         $user->save();
     }
+
+    /**
+     * change password
+     * @param \Illuminate\Http\Request $request
+     */
+    public function changePassword($request)
+    {
+        $user = User::find(Auth::user()->id);
+        $user->password = Hash::make($request->confirm_new_password);
+        $user->update();
+    }
+
+    /**
+     * user detail
+     * @param int $id
+     */
+    public function detailUser($id)
+    {
+        return User::findOrFail($id);
+    }
+    /**
+     * delete user by id
+     * @param int $id
+     */
+    public function deleteUserById($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+    }
 }

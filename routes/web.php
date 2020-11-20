@@ -36,7 +36,11 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Route::get('/edit_password', function () {
         return view('users.edit_password');
-    })->middleware('auth')->name('change_password');
+    })->middleware('auth')->name('edit_password');
+
+    Route::put('/change_password', [UserController::class, 'changePassword'])->middleware('auth')->name('change_password');
+
+    Route::get('/detail_user', [UserController::class, 'detailUser'])->middleware('auth')->name('detail_user');
 
     Route::get('/edit_user/{id}', [UserController::class, 'editUser'])->middleware('auth')->name('edit_user');
 

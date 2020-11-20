@@ -127,8 +127,12 @@
                         <td>{{$row->updated_at}}</td>
                         <td>
                             <div class="d-flex justify-content-between">
-                            <a href="{{route('edit_user', $row->id)}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
+                                <a href="{{route('edit_user', $row->id)}}" class="btn btn-primary">Edit</a>
+                                <button type="button" class="btn btn-danger" data-id="{{$row->id}}"
+                                    data-name="{{$row->name}}" data-type="{{$row->type}}" data-email="{{$row->email}}"
+                                    data-phone="{{$row->phone}}" data-dob="{{$row->dob}}"
+                                    data-address="{{$row->address}}" data-toggle="modal"
+                                    data-target="#userInfo">Delete</button>
                             </div>
                         </td>
                     </tr>
@@ -140,7 +144,8 @@
 </div>
 
 <!-- Modal for User Delete -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="userInfo" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -153,7 +158,7 @@
                 <h3 style="color:red;">Are you sure to delete user?</h3>
                 <div class="row pt-4">
                     <label class="col-sm-4">ID</label>
-                    <span class="col-sm-7" style="color:red;"><i>2</i></span>
+                    <span class="col-sm-7" style="color:red;"><i>id</i></span>
                 </div>
                 <div class="row pt-4">
                     <label class="col-sm-4">Name</label>
@@ -172,7 +177,7 @@
                     <span class="col-sm-7" style="color:red;"><i>0999999</i></span>
                 </div>
                 <div class="row pt-4">
-                    <label class="col-sm-4"></label>
+                    <label class="col-sm-4">Date of Birth</label>
                     <span class="col-sm-7" style="color:red;"><i>2020-09-13</i></span>
                 </div>
                 <div class="row pt-4">
