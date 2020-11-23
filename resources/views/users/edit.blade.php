@@ -12,7 +12,7 @@
 				@csrf
 				@method('PUT')
                     <div class="form-group row">
-                        <label class="col-sm-4 text-right">Name <span style="color:red;">*</span></label>
+                        <label class="col-sm-4 text-right">Name <span class="red">*</span></label>
                         <input type="text" name="name" class="form-control col-sm-7" value="{{$user->name}}">
                         @if ($errors->has('name'))
                         <span class="form-text text-danger">{{ $errors->first('name') }}</span>
@@ -20,7 +20,7 @@
                     </div>
                     <input type="hidden" name="create_user" value="{{$user->create_user_id}}">
                     <div class="form-group row">
-                        <label class="col-sm-4 text-right">E-mail Address <span style="color:red;">*</span></label>
+                        <label class="col-sm-4 text-right">E-mail Address <span class="red">*</span></label>
                         <input type="text" name="email" class="form-control col-sm-7" value="{{$user->email}}">
                         @if ($errors->has('email'))
                         <span class="form-text text-danger">{{ $errors->first('email') }}</span>
@@ -28,7 +28,7 @@
                         <input type="hidden" name="old_password" value="{{$user->password}}">
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-4 text-right">Type <span style="color:red;">*</span></label>
+                        <label class="col-sm-4 text-right">Type <span class="red">*</span></label>
                         <select class="form-control col-sm-7" name="type">
                             <option value="0" <?php if($user->type == '0') echo "selected"; ?>>Admin</option>
                             <option value="1" <?php if($user->type == '1') echo "selected"; ?>>User</option>

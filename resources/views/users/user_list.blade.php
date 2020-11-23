@@ -52,53 +52,43 @@
                             <div class="float-right col-sm-8">
                                 <div class="row">
                                     <label class="col-sm-5">Name</label>
-                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
-                                        id="user_name">
+                                    <input type="text" class="col-sm-7 text" id="user_name">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Type</label>
-                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
-                                        id="user_type">
+                                    <input type="text" class="col-sm-7 text" id="user_type">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Email</label>
-                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
-                                        id="user_email">
+                                    <input type="text" class="col-sm-7 text" id="user_email">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Phone</label>
-                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
-                                        id="user_phone">
+                                    <input type="text" class="col-sm-7 text" id="user_phone">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Date of Birth</label>
-                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
-                                        id="user_dob">
+                                    <input type="text" class="col-sm-7 text" id="user_dob">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Address</label>
-                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
-                                        id="user_address">
+                                    <input type="text" class="col-sm-7 text" id="user_address">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Created Date</label>
-                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
-                                        id="user_created_date">
+                                    <input type="text" class="col-sm-7 text" id="user_created_date">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Created User</label>
-                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
-                                        id="created_user">
+                                    <input type="text" class="col-sm-7 text" id="created_user">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Updated Date</label>
-                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
-                                        id="user_updated_date">
+                                    <input type="text" class="col-sm-7 text" id="user_updated_date">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Updated User</label>
-                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
-                                        id="updated_user">
+                                    <input type="text" class="col-sm-7 text" id="updated_user">
                                 </div>
                             </div>
                         </div>
@@ -137,7 +127,7 @@
                             data-dob="{{$row->dob}}" data-address="{{$row->address}}"
                             data-created_at="{{$row->created_at}}" data-create_user_id="{{$row->user->name}}"
                             data-updated_at="{{$row->updated_at}}" data-updated_user_id="{{$row->user->name}}"
-                            data-target="#user_details" style="color:red;">
+                            data-target="#user_details" class="red">
                             {{$row->name}}</td>
                         <td>{{$row->email}}</td>
                         <td>{{$row->user->name}}</td>
@@ -181,39 +171,38 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <h3 style="color:red;">Are you sure to delete user?</h3>
+            <h3 class="red">Are you sure to delete user?</h3>
             <form action="{{route('delete_user')}}" method="post">
                 @csrf
                 @method('DELETE')
                 <div class="container">
                     <div class="row">
                         <label class="col-sm-4">ID</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="user_id" name=id>
+                        <input type="text" class="col-sm-7 text" id="user_id" name=id>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Name</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="user_name" name=name>
+                        <input type="text" class="col-sm-7 text" id="user_name" name=name>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Type</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="user_type" name=type>
+                        <input type="text" class="col-sm-7 text" id="user_type" name=type>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Email</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="user_email" name=email>
+                        <input type="text" class="col-sm-7 text" id="user_email" name=email>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Phone</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="user_phone" name=phone>
+                        <input type="text" class="col-sm-7 text" id="user_phone" name=phone>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Date of Birth</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="user_dob" name=dob>
+                        <input type="text" class="col-sm-7 text" id="user_dob" name=dob>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Address</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="user_address"
-                            name=address>
+                        <input type="text" class="col-sm-7 text" id="user_address" name=address>
                     </div>
                 </div>
                 <div class="modal-body" id="userDetails">

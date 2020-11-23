@@ -46,8 +46,9 @@
                     <tr>
                         <td data-toggle="modal" data-id="{{$row->id}}" data-title="{{$row->title}}"
                             data-description="{{$row->description}}" data-status="{{$row->status}}"
-                            data-created_at="{{$row->created_at}}" data-create_user_id="{{$row->create_user_id}}" data-updated_at="{{$row->updated_at}}"
-                            data-updated_user_id="{{$row->updated_user_id}}" data-target="#post_details" style="color:red;">
+                            data-created_at="{{$row->created_at}}" data-create_user_id="{{$row->create_user_id}}"
+                            data-updated_at="{{$row->updated_at}}" data-updated_user_id="{{$row->updated_user_id}}"
+                            data-target="#post_details" class="red">
                             {{$row->title}}</td>
                         <td>{{$row->description}}</td>
                         <td>{{$row->user->name}}</td>
@@ -82,31 +83,31 @@
                     <input type="hidden" id="post_id" name=id>
                     <div class="row">
                         <label class="col-sm-5">Title</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="post_title">
+                        <input type="text" class="col-sm-7 text" id="post_title">
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Description</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="post_description">
+                        <input type="text" class="col-sm-7 text" id="post_description">
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Status</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="post_status">
+                        <input type="text" class="col-sm-7 text" id="post_status">
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Created Date</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="post_created_date">
+                        <input type="text" class="col-sm-7 text" id="post_created_date">
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Created User</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="post_created_user">
+                        <input type="text" class="col-sm-7 text" id="post_created_user">
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Updated Date</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="post_updated_date">
+                        <input type="text" class="col-sm-7 text" id="post_updated_date">
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Updated User</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="post_updated_user">
+                        <input type="text" class="col-sm-7 text" id="post_updated_user">
                     </div>
                 </div>
             </div>
@@ -135,21 +136,19 @@
                 <div class="container">
                     <div class="row">
                         <label class="col-sm-4">ID</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="post_id" name=id>
+                        <input type="text" class="col-sm-7 text" id="post_id" name=id>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Title</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="post_title" name=title>
+                        <input type="text" class="col-sm-7 text" id="post_title" name=title>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Description</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="post_description"
-                            name=description>
+                        <input type="text" class="col-sm-7 text" id="post_description" name=description>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Status</label>
-                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="post_status"
-                            name=status>
+                        <input type="text" class="col-sm-7 text" id="post_status" name=status>
                     </div>
                 </div>
                 <div class="modal-body" id="postDetails">
