@@ -26,18 +26,12 @@ class UserDao implements UserDaoInterface
      */
     public function saveUser($request)
     {
-        if ($request->c_type == 'Admin') {
-            $result = 0;
-        } else {
-            $result = 1;
-        }
-
         $user = new User();
         $user->name = $request->c_name;
         $user->email = $request->email;
         $user->password = Hash::make($request->confirm_password);
         $user->profile = $request->profile;
-        $user->type = $result;
+        $user->type = $request->c_type;
         $user->phone = $request->c_phone;
         $user->address = $request->c_address;
         $user->dob = $request->c_dob;
@@ -72,18 +66,12 @@ class UserDao implements UserDaoInterface
             $path = $request->old_profile;
         }
 
-        if ($request->type == 'Admin') {
-            $result = $request->type = 0;
-        } else {
-            $result = $request->type = 1;
-        }
-
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->old_password;
         $user->profile = $path;
-        $user->type = $result;
+        $user->type = $request->type;
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->dob = $request->dob;

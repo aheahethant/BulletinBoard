@@ -41,9 +41,11 @@
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Type</label>
                         <select class="form-control col-sm-7" name="c_type" >
-                            <option>{{$type}}</option>
-                            <option>Admin</option>
-                            <option>User</option>
+                            @if($type == 0)
+                            <option value="0">Admin</option>
+                            @else
+                            <option value="1">User</option>
+                            @endif
                         </select>
                         @if ($errors->has('c_type'))
                         <span class="form-text text-danger">{{ $errors->first('c_type') }}</span>
