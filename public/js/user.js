@@ -102,9 +102,9 @@ $(document).ready(function () {
         var dob = button.data("dob");
         var address = button.data("address");
         var created_at = button.data("created_at");
-        var create_user_id = button.data("name");
+        var create_user_id = button.data("create_user_id");
         var updated_at = button.data("updated_at");
-        var updated_user_id = button.data("name");
+        var updated_user_id = button.data("updated_user_id");
 
         var modal = $(this);
         modal.find('#user_name').val(name);

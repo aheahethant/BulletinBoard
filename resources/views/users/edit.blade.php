@@ -18,6 +18,7 @@
                         <span class="form-text text-danger">{{ $errors->first('name') }}</span>
                         @endif
                     </div>
+                    <input type="hidden" name="create_user" value="{{$user->create_user_id}}">
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">E-mail Address <span style="color:red;">*</span></label>
                         <input type="text" name="email" class="form-control col-sm-7" value="{{$user->email}}">

@@ -75,7 +75,7 @@ class UserDao implements UserDaoInterface
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->dob = $request->dob;
-        $user->create_user_id = Auth::user()->id;
+        $user->create_user_id = $request->create_user;
         $user->updated_user_id = Auth::user()->id;
         $user->save();
     }

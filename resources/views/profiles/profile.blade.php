@@ -8,33 +8,37 @@
         </div>
         <div class="row pt-5 pb-5">
             <div class="float-left col-sm-3">
-                <img src="{{asset('storage_image/car.jpg')}}" class="w-100 h-auto" alt="">
+                <img src="{{asset(Auth::user()->profile)}}" class="w-100 h-auto" alt="">
             </div>
             <div class="col-sm-8 float-right">
                 <form>
                     <div class="row form-group">
                         <label class="col-sm-4">Name</label>
-                        <i class="col-sm-7" style="color:red;">admin</i>
+                        <i class="col-sm-7" style="color:red;">{{Auth::user()->name}}</i>
                     </div>
                     <div class="row form-group">
                         <label class="col-sm-4">Type</label>
+                        @if(Auth::user()->type == 0)
                         <i class="col-sm-7" style="color:red;">Admin</i>
+                        @else
+                        <i class="col-sm-7" style="color:red;">User</i>
+                        @endif
                     </div>
                     <div class="row form-group">
                         <label class="col-sm-4">Email</label>
-                        <i class="col-sm-7" style="color:red;">scm.test@gmail.com</i>
+                        <i class="col-sm-7" style="color:red;">{{Auth::user()->email}}</i>
                     </div>
                     <div class="row form-group">
                         <label class="col-sm-4">Phone</label>
-                        <i class="col-sm-7" style="color:red;">09792074099</i>
+                        <i class="col-sm-7" style="color:red;">{{Auth::user()->phone}}</i>
                     </div>
                     <div class="row form-group">
                         <label class="col-sm-4">Date of Birth</label>
-                        <i class="col-sm-7" style="color:red;">1970/01/01</i>
+                        <i class="col-sm-7" style="color:red;">{{Auth::user()->dob}}</i>
                     </div>
                     <div class="row form-group">
                         <label class="col-sm-4">Address</label>
-                        <i class="col-sm-7" style="color:red;">Yangon</i>
+                        <i class="col-sm-7" style="color:red;">{{Auth::user()->address}}</i>
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-4"></div>
