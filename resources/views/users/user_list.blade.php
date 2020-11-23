@@ -33,8 +33,9 @@
             </div>
         </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal">
+        <!-- Modal for User Detail-->
+        <div class="modal fade" id="user_details" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -46,48 +47,58 @@
                     <div class="modal-body">
                         <div class="container row clearfix">
                             <div class="float-left col-sm-4">
-                                <img src="{{asset('storage_image/car.jpg')}}" alt="" width="100%">
+                                <img src="{{asset('')}}" id="user_image" alt="" width="100%" height="30%">
                             </div>
                             <div class="float-right col-sm-8">
                                 <div class="row">
                                     <label class="col-sm-5">Name</label>
-                                    <p class="col-sm-6">Admin</p>
+                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
+                                        id="user_name">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Type</label>
-                                    <p class="col-sm-6">Admin</p>
+                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
+                                        id="user_type">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Email</label>
-                                    <p class="col-sm-6">admin@gmail.com</p>
+                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
+                                        id="user_email">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Phone</label>
-                                    <p class="col-sm-6">09844554555</p>
+                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
+                                        id="user_phone">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Date of Birth</label>
-                                    <p class="col-sm-6">1998/12/27</p>
+                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
+                                        id="user_dob">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Address</label>
-                                    <p class="col-sm-6">Mandalay</p>
+                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
+                                        id="user_address">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Created Date</label>
-                                    <p class="col-sm-6">2020/11/05</p>
+                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
+                                        id="user_created_date">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Created User</label>
-                                    <p class="col-sm-6">Admin</p>
+                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
+                                        id="created_user">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Updated Date</label>
-                                    <p class="col-sm-6">2020/11/05</p>
+                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
+                                        id="user_updated_date">
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Updated User</label>
-                                    <p class="col-sm-6">Admin</p>
+                                    <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7"
+                                        id="updated_user">
                                 </div>
                             </div>
                         </div>
@@ -120,7 +131,14 @@
                     @foreach($users as $row)
                     <tr>
                         <td>{{$row->id}}</td>
-                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">{{$row->name}}</td>
+                        <td data-toggle="modal" data-id="{{$row->id}}" data-name="{{$row->name}}"
+                            data-email="{{$row->email}}" data-type="{{$row->type}}"
+                            data-profile="{{asset($row->profile)}}" data-phone="{{$row->phone}}"
+                            data-dob="{{$row->dob}}" data-address="{{$row->address}}"
+                            data-created_at="{{$row->created_at}}" data-create_user_id="{{$row->user->name}}"
+                            data-updated_at="{{$row->updated_at}}" data-updated_user_id="{{$row->user->name}}"
+                            data-target="#user_details" style="color:red;">
+                            {{$row->name}}</td>
                         <td>{{$row->email}}</td>
                         <td>{{$row->user->name}}</td>
                         @if($row->type == 0)
@@ -170,31 +188,31 @@
                 <div class="container">
                     <div class="row">
                         <label class="col-sm-4">ID</label>
-                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_id" name=id>
+                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="user_id" name=id>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Name</label>
-                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_name" name=name>
+                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="user_name" name=name>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Type</label>
-                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_type" name=type>
+                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="user_type" name=type>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Email</label>
-                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_email" name=email>
+                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="user_email" name=email>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Phone</label>
-                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_phone" name=phone>
+                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="user_phone" name=phone>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Date of Birth</label>
-                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_dob" name=dob>
+                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="user_dob" name=dob>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Address</label>
-                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_address"
+                        <input type="text" style="color:red; border:none; outline:none;" class="col-sm-7" id="user_address"
                             name=address>
                     </div>
                 </div>

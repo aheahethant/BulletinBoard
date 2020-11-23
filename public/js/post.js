@@ -46,8 +46,6 @@ $(document).ready(function () {
         }else{
             modal.find('#post_status').val("NotActive");
         }
-    }).on("hide.bs.modal", function (event) {
-        $(this).find("#postDetails").html("");
     });
 });
 
