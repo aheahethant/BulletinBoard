@@ -10,15 +10,15 @@
             <div class="col-sm-10">
                 <form>
                     <div class="form-group row">
-                        <label class="col-sm-4 text-right">Name <span style="color:red;">*</span></label>
+                        <label class="col-sm-4 text-right">Name <span class="red">*</span></label>
                         <input type="text" class="form-control col-sm-7" value="admin">
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-4 text-right">E-mail Address <span style="color:red;">*</span></label>
+                        <label class="col-sm-4 text-right">E-mail Address <span class="red">*</span></label>
                         <input type="text" class="form-control col-sm-7" value="scm.test@gmail.com">
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-4 text-right">Type <span style="color:red;">*</span></label>
+                        <label class="col-sm-4 text-right">Type <span class="red">*</span></label>
                         <select class="form-control col-sm-7">
                             <option>Admin</option>
                             <option>User</option>

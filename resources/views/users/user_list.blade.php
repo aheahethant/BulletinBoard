@@ -33,8 +33,9 @@
             </div>
         </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal">
+        <!-- Modal for User Detail-->
+        <div class="modal fade" id="user_details" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -46,48 +47,48 @@
                     <div class="modal-body">
                         <div class="container row clearfix">
                             <div class="float-left col-sm-4">
-                                <img src="{{asset('storage_image/car.jpg')}}" alt="" width="100%">
+                                <img src="{{asset('')}}" id="user_image" alt="" width="100%" height="35%">
                             </div>
                             <div class="float-right col-sm-8">
                                 <div class="row">
                                     <label class="col-sm-5">Name</label>
-                                    <p class="col-sm-6">Admin</p>
+                                    <input type="text" class="col-sm-7 text" id="user_name" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Type</label>
-                                    <p class="col-sm-6">Admin</p>
+                                    <input type="text" class="col-sm-7 text" id="user_type" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Email</label>
-                                    <p class="col-sm-6">admin@gmail.com</p>
+                                    <input type="text" class="col-sm-7 text" id="user_email" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Phone</label>
-                                    <p class="col-sm-6">09844554555</p>
+                                    <input type="text" class="col-sm-7 text" id="user_phone" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Date of Birth</label>
-                                    <p class="col-sm-6">1998/12/27</p>
+                                    <input type="text" class="col-sm-7 text" id="user_dob" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Address</label>
-                                    <p class="col-sm-6">Mandalay</p>
+                                    <input type="text" class="col-sm-7 text" id="user_address" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Created Date</label>
-                                    <p class="col-sm-6">2020/11/05</p>
+                                    <input type="text" class="col-sm-7 text" id="user_created_date" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Created User</label>
-                                    <p class="col-sm-6">Admin</p>
+                                    <input type="text" class="col-sm-7 text" id="created_user" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Updated Date</label>
-                                    <p class="col-sm-6">2020/11/05</p>
+                                    <input type="text" class="col-sm-7 text" id="user_updated_date" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Updated User</label>
-                                    <p class="col-sm-6">Admin</p>
+                                    <input type="text" class="col-sm-7 text" id="updated_user" disabled>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +121,14 @@
                     @foreach($users as $row)
                     <tr>
                         <td>{{$row->id}}</td>
-                        <td data-toggle="modal" data-target="#exampleModal" style="color:red;">{{$row->name}}</td>
+                        <td data-toggle="modal" data-id="{{$row->id}}" data-name="{{$row->name}}"
+                            data-email="{{$row->email}}" data-type="{{$row->type}}"
+                            data-profile="{{asset($row->profile)}}" data-phone="{{$row->phone}}"
+                            data-dob="{{$row->dob}}" data-address="{{$row->address}}"
+                            data-created_at="{{($row->created_at)->format('yy-m-d')}}" data-create_user_id="{{$row->user->name}}"
+                            data-updated_at="{{($row->updated_at)->format('yy-m-d')}}" data-updated_user_id="{{$row->user->name}}"
+                            data-target="#user_details" class="red cursor">
+                            {{$row->name}}</td>
                         <td>{{$row->email}}</td>
                         <td>{{$row->user->name}}</td>
                         @if($row->type == 0)
@@ -131,11 +139,11 @@
                         <td>{{$row->phone}}</td>
                         <td>{{$row->dob}}</td>
                         <td>{{$row->address}}</td>
-                        <td>{{$row->created_at}}</td>
-                        <td>{{$row->updated_at}}</td>
+                        <td>{{($row->created_at)->format('yy-m-d')}}</td>
+                        <td>{{($row->updated_at)->format('yy-m-d')}}</td>
                         <td>
-                            <div class="d-flex justify-content-between">
-                                <a href="{{route('edit_user', $row->id)}}" class="btn btn-primary">Edit</a>
+                            <div class="d-flex">
+                                <a href="{{route('edit_user', $row->id)}}" class="btn btn-primary margin">Edit</a>
                                 <button type="button" data-id="{{$row->id}}" data-name="{{$row->name}}"
                                     data-email="{{$row->email}}" data-type="{{$row->type}}" data-phone="{{$row->phone}}"
                                     data-dob="{{$row->dob}}" data-address="{{$row->address}}"
@@ -163,39 +171,38 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <h3 style="color:red;">Are you sure to delete user?</h3>
+            <h3 class="red">Are you sure to delete user?</h3>
             <form action="{{route('delete_user')}}" method="post">
                 @csrf
                 @method('DELETE')
                 <div class="container">
                     <div class="row">
                         <label class="col-sm-4">ID</label>
-                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_id" name=id>
+                        <input type="text" class="col-sm-7 text" id="user_id" name=id disabled>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Name</label>
-                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_name" name=name>
+                        <input type="text" class="col-sm-7 text" id="user_name" name=name disabled>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Type</label>
-                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_type" name=type>
+                        <input type="text" class="col-sm-7 text" id="user_type" name=type disabled>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Email</label>
-                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_email" name=email>
+                        <input type="text" class="col-sm-7 text" id="user_email" name=email disabled>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Phone</label>
-                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_phone" name=phone>
+                        <input type="text" class="col-sm-7 text" id="user_phone" name=phone disabled>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Date of Birth</label>
-                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_dob" name=dob>
+                        <input type="text" class="col-sm-7 text" id="user_dob" name=dob disabled>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Address</label>
-                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_address"
-                            name=address>
+                        <input type="text" class="col-sm-7 text" id="user_address" name=address disabled>
                     </div>
                 </div>
                 <div class="modal-body" id="userDetails">
