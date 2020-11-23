@@ -30,4 +30,10 @@ interface PostServiceInterface
      * @return array post
      */
     public function updatePost($request, $id);
+    
+    /**
+     * delete post by id
+     * @param \Illuminate\Http\Request $request
+     */
+    public function deletePostById($request);
 }

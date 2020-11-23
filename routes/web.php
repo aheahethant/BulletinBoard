@@ -40,7 +40,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Route::put('/change_password', [UserController::class, 'changePassword'])->middleware('auth')->name('change_password');
 
-    Route::get('/detail_user', [UserController::class, 'detailUser'])->middleware('auth')->name('detail_user');
+    Route::delete('/delete_user', [UserController::class, 'deleteUserById'])->middleware('auth')->name('delete_user');
 
     Route::get('/edit_user/{id}', [UserController::class, 'editUser'])->middleware('auth')->name('edit_user');
 
@@ -65,6 +65,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/edit_post/{id}', [PostController::class, 'getPostById'])->middleware('auth')->name('edit_post');
 
     Route::put('/update_post/{id}', [PostController::class, 'updatePost'])->middleware('auth')->name('update_post');
+
+    Route::delete('/delete_post', [PostController::class, 'deletePostById'])->middleware('auth')->name('delete_post');
 
     Route::get('/confirm_post', function () {
         return view('posts.confirm');

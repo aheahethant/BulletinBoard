@@ -66,18 +66,11 @@ class UserService implements UserServiceInterface
     }
 
     /**
-     * detail User
-     */
-    public function detailUser($id)
-    {
-        return $this->userDao->detailUser($id);
-    }
-
-    /**
      * delete user by id
+     * @param \Illuminate\Http\Request $request
      */
-    public function deleteUserById($id)
+    public function deleteUserById($request)
     {
-        return $this->userDao->deleteUserById($id);
+        return $this->userDao->deleteUserById($request);
     }
 }

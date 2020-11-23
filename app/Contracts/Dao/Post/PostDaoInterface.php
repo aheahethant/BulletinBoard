@@ -27,4 +27,10 @@ interface PostDaoInterface
      * @param mixed $id
      */
     public function updatePost($request, $id);
+    
+    /**
+     * delete post by id
+     * @param \Illuminate\Http\Request $request
+     */
+    public function deletePostById($request);
 }

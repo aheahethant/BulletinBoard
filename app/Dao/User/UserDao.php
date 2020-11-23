@@ -72,7 +72,7 @@ class UserDao implements UserDaoInterface
             $path = $request->old_profile;
         }
 
-        if ($request->type == 'admin') {
+        if ($request->type == 'Admin') {
             $result = $request->type = 0;
         } else {
             $result = $request->type = 1;
@@ -104,20 +104,11 @@ class UserDao implements UserDaoInterface
     }
 
     /**
-     * user detail
-     * @param int $id
-     */
-    public function detailUser($id)
-    {
-        return User::findOrFail($id);
-    }
-    /**
      * delete user by id
-     * @param int $id
+     * @param \Illuminate\Http\Request $request
      */
-    public function deleteUserById($id)
+    public function deleteUserById($request)
     {
-        $user = User::find($id);
-        $user->delete();
+        User::find($request->id)->delete();
     }
 }

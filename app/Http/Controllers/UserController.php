@@ -147,21 +147,14 @@ class UserController extends Controller
         $this->userInterface->changePassword($request);
         return redirect()->route('profile');
     }
-
+    
     /**
-     * user detail
-     * @param int $id
+     * delete user by id
+     * @param \Illuminate\Http\Request $request
      */
-    public function detailUser($id)
+    public function deleteUserById(Request $request)
     {
-        $user = $this->userInterface->detailUser($id);
-        $returnHTML = view('users.user_list',['id'=> $user->id])->render();
-        return response()->json( ['html'=>$returnHTML]);
-    }
-
-    public function deleteUserById($id)
-    {
-        $this->userInterface->deleteUserById($id);
+        $this->userInterface->deleteUserById($request);
         return redirect()->route('user_list');
     }
 }

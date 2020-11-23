@@ -63,4 +63,13 @@ class PostDao implements PostDaoInterface
         $post->updated_user_id = Auth::user()->id;
         $post->save();
     }
+    
+    /**
+     * delete post by id
+     * @param \Illuminate\Http\Request $request
+     */
+    public function deletePostById($request)
+    {
+        Post::find($request->id)->delete();
+    }
 }
