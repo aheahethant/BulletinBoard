@@ -47,48 +47,48 @@
                     <div class="modal-body">
                         <div class="container row clearfix">
                             <div class="float-left col-sm-4">
-                                <img src="{{asset('')}}" id="user_image" alt="" width="100%" height="30%">
+                                <img src="{{asset('')}}" id="user_image" alt="" width="100%" height="35%">
                             </div>
                             <div class="float-right col-sm-8">
                                 <div class="row">
                                     <label class="col-sm-5">Name</label>
-                                    <input type="text" class="col-sm-7 text" id="user_name">
+                                    <input type="text" class="col-sm-7 text" id="user_name" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Type</label>
-                                    <input type="text" class="col-sm-7 text" id="user_type">
+                                    <input type="text" class="col-sm-7 text" id="user_type" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Email</label>
-                                    <input type="text" class="col-sm-7 text" id="user_email">
+                                    <input type="text" class="col-sm-7 text" id="user_email" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Phone</label>
-                                    <input type="text" class="col-sm-7 text" id="user_phone">
+                                    <input type="text" class="col-sm-7 text" id="user_phone" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Date of Birth</label>
-                                    <input type="text" class="col-sm-7 text" id="user_dob">
+                                    <input type="text" class="col-sm-7 text" id="user_dob" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Address</label>
-                                    <input type="text" class="col-sm-7 text" id="user_address">
+                                    <input type="text" class="col-sm-7 text" id="user_address" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Created Date</label>
-                                    <input type="text" class="col-sm-7 text" id="user_created_date">
+                                    <input type="text" class="col-sm-7 text" id="user_created_date" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Created User</label>
-                                    <input type="text" class="col-sm-7 text" id="created_user">
+                                    <input type="text" class="col-sm-7 text" id="created_user" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Updated Date</label>
-                                    <input type="text" class="col-sm-7 text" id="user_updated_date">
+                                    <input type="text" class="col-sm-7 text" id="user_updated_date" disabled>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Updated User</label>
-                                    <input type="text" class="col-sm-7 text" id="updated_user">
+                                    <input type="text" class="col-sm-7 text" id="updated_user" disabled>
                                 </div>
                             </div>
                         </div>
@@ -125,9 +125,9 @@
                             data-email="{{$row->email}}" data-type="{{$row->type}}"
                             data-profile="{{asset($row->profile)}}" data-phone="{{$row->phone}}"
                             data-dob="{{$row->dob}}" data-address="{{$row->address}}"
-                            data-created_at="{{$row->created_at}}" data-create_user_id="{{$row->user->name}}"
-                            data-updated_at="{{$row->updated_at}}" data-updated_user_id="{{$row->user->name}}"
-                            data-target="#user_details" class="red">
+                            data-created_at="{{($row->created_at)->format('yy-m-d')}}" data-create_user_id="{{$row->user->name}}"
+                            data-updated_at="{{($row->updated_at)->format('yy-m-d')}}" data-updated_user_id="{{$row->user->name}}"
+                            data-target="#user_details" class="red cursor">
                             {{$row->name}}</td>
                         <td>{{$row->email}}</td>
                         <td>{{$row->user->name}}</td>
@@ -139,11 +139,11 @@
                         <td>{{$row->phone}}</td>
                         <td>{{$row->dob}}</td>
                         <td>{{$row->address}}</td>
-                        <td>{{$row->created_at}}</td>
-                        <td>{{$row->updated_at}}</td>
+                        <td>{{($row->created_at)->format('yy-m-d')}}</td>
+                        <td>{{($row->updated_at)->format('yy-m-d')}}</td>
                         <td>
-                            <div class="d-flex justify-content-between">
-                                <a href="{{route('edit_user', $row->id)}}" class="btn btn-primary">Edit</a>
+                            <div class="d-flex">
+                                <a href="{{route('edit_user', $row->id)}}" class="btn btn-primary margin">Edit</a>
                                 <button type="button" data-id="{{$row->id}}" data-name="{{$row->name}}"
                                     data-email="{{$row->email}}" data-type="{{$row->type}}" data-phone="{{$row->phone}}"
                                     data-dob="{{$row->dob}}" data-address="{{$row->address}}"
@@ -178,31 +178,31 @@
                 <div class="container">
                     <div class="row">
                         <label class="col-sm-4">ID</label>
-                        <input type="text" class="col-sm-7 text" id="user_id" name=id>
+                        <input type="text" class="col-sm-7 text" id="user_id" name=id disabled>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Name</label>
-                        <input type="text" class="col-sm-7 text" id="user_name" name=name>
+                        <input type="text" class="col-sm-7 text" id="user_name" name=name disabled>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Type</label>
-                        <input type="text" class="col-sm-7 text" id="user_type" name=type>
+                        <input type="text" class="col-sm-7 text" id="user_type" name=type disabled>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Email</label>
-                        <input type="text" class="col-sm-7 text" id="user_email" name=email>
+                        <input type="text" class="col-sm-7 text" id="user_email" name=email disabled>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Phone</label>
-                        <input type="text" class="col-sm-7 text" id="user_phone" name=phone>
+                        <input type="text" class="col-sm-7 text" id="user_phone" name=phone disabled>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Date of Birth</label>
-                        <input type="text" class="col-sm-7 text" id="user_dob" name=dob>
+                        <input type="text" class="col-sm-7 text" id="user_dob" name=dob disabled>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Address</label>
-                        <input type="text" class="col-sm-7 text" id="user_address" name=address>
+                        <input type="text" class="col-sm-7 text" id="user_address" name=address disabled>
                     </div>
                 </div>
                 <div class="modal-body" id="userDetails">

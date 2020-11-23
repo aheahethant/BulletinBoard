@@ -5,3 +5,9 @@
     outline: none;
     border: none;
 }
+.margin{
+    margin-right: 2px;
+}
+.cursor{
+    cursor: pointer;
+}
