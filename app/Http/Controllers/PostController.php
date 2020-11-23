@@ -84,4 +84,14 @@ class PostController extends Controller
         $this->postInterface->updatePost($request, $id);
         return redirect()->route('post_list');
     }
+    
+    /**
+     * delete post by id
+     * @param \Illuminate\Http\Request $request
+     */
+    public function deletePostById(Request $request)
+    {
+        $this->postInterface->deletePostById($request);
+        return redirect()->route('post_list');
+    }
 }

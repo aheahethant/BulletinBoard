@@ -29,13 +29,8 @@
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Type <span style="color:red;">*</span></label>
                         <select class="form-control col-sm-7" name="type">
-                            @if($user->type == 0)
-                            <option>Admin</option>
-                            @else
-                            <option>User</option>
-                            @endif
-                            <option>Admin</option>
-                            <option>User</option>
+                            <option value="0" <?php if($user->type == '0') echo "selected"; ?>>Admin</option>
+                            <option value="1" <?php if($user->type == '1') echo "selected"; ?>>User</option>
                         </select>
                         @if ($errors->has('type'))
                         <span class="form-text text-danger">{{ $errors->first('type') }}</span>

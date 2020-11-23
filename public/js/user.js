@@ -22,7 +22,7 @@ $.fn.dataTableExt.afnFiltering.push(
 );
 
 /**
- * ready function
+ * ready function for user list
  */
 $(document).ready(function () {
     var table = $('#user_list').DataTable({
@@ -45,5 +45,41 @@ $(document).ready(function () {
         var searchEmail = $('#email').val();
         table.columns(name_column).search(searchName).draw();
         table.columns(email_column).search(searchEmail).draw();
+    });
+});
+
+/**
+ * user details
+ */
+$(document).ready(function () {
+    $("#userInfo").modal({
+        keyboard: true,
+        backdrop: "static",
+        show: false,
+
+    }).on("show.bs.modal", function (event) {
+        var button = $(event.relatedTarget); // button the triggered modal
+        var userId = button.data("id"); //data-id of button which is equal to id (primary key) of user
+        var Name = button.data("name");
+        var Type = button.data("type");
+        var Email = button.data("email");
+        var Phone = button.data("phone");
+        var dob = button.data("dob");
+        var Address = button.data("address");
+
+        var modal = $(this);
+        modal.find('#user_id').val(userId);
+        modal.find('#user_name').val(Name);
+        if(Type == 0){
+            modal.find('#user_type').val("Admin");
+        }else{
+            modal.find('#user_type').val("User");
+        }
+        modal.find('#user_email').val(Email);
+        modal.find('#user_phone').val(Phone);
+        modal.find('#user_dob').val(dob);
+        modal.find('#user_address').val(Address);
+    }).on("hide.bs.modal", function (event) {
+        $(this).find("#userDetails").html("");
     });
 });

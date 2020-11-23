@@ -5,7 +5,11 @@
 <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
 
 <!-- script -->
+<!-- script for delete user details -->
+
 <script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/user.js') }}"></script>
 <script src="{{ asset('js/moment.min.js') }}"></script>
@@ -119,7 +123,11 @@
                         <td data-toggle="modal" data-target="#exampleModal" style="color:red;">{{$row->name}}</td>
                         <td>{{$row->email}}</td>
                         <td>{{$row->user->name}}</td>
-                        <td>{{$row->type}}</td>
+                        @if($row->type == 0)
+                        <td>Admin</td>
+                        @else
+                        <td>User</td>
+                        @endif
                         <td>{{$row->phone}}</td>
                         <td>{{$row->dob}}</td>
                         <td>{{$row->address}}</td>
@@ -127,20 +135,26 @@
                         <td>{{$row->updated_at}}</td>
                         <td>
                             <div class="d-flex justify-content-between">
-                            <a href="{{route('edit_user', $row->id)}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
+                                <a href="{{route('edit_user', $row->id)}}" class="btn btn-primary">Edit</a>
+                                <button type="button" data-id="{{$row->id}}" data-name="{{$row->name}}"
+                                    data-email="{{$row->email}}" data-type="{{$row->type}}" data-phone="{{$row->phone}}"
+                                    data-dob="{{$row->dob}}" data-address="{{$row->address}}"
+                                    class="btn btn-danger userInfo" data-toggle="modal"
+                                    data-target="#userInfo">Delete</button>
                             </div>
                         </td>
                     </tr>
+
+
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
 <!-- Modal for User Delete -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="userInfo" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -149,40 +163,48 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <h3 style="color:red;">Are you sure to delete user?</h3>
-                <div class="row pt-4">
-                    <label class="col-sm-4">ID</label>
-                    <span class="col-sm-7" style="color:red;"><i>2</i></span>
+            <h3 style="color:red;">Are you sure to delete user?</h3>
+            <form action="{{route('delete_user')}}" method="post">
+                @csrf
+                @method('DELETE')
+                <div class="container">
+                    <div class="row">
+                        <label class="col-sm-4">ID</label>
+                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_id" name=id>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4">Name</label>
+                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_name" name=name>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4">Type</label>
+                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_type" name=type>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4">Email</label>
+                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_email" name=email>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4">Phone</label>
+                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_phone" name=phone>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4">Date of Birth</label>
+                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_dob" name=dob>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4">Address</label>
+                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="user_address"
+                            name=address>
+                    </div>
                 </div>
-                <div class="row pt-4">
-                    <label class="col-sm-4">Name</label>
-                    <span class="col-sm-7" style="color:red;"><i>Test User</i></span>
+                <div class="modal-body" id="userDetails">
                 </div>
-                <div class="row pt-4">
-                    <label class="col-sm-4">Type</label>
-                    <span class="col-sm-7" style="color:red;"><i>User</i></span>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
                 </div>
-                <div class="row pt-4">
-                    <label class="col-sm-4">Email</label>
-                    <span class="col-sm-7" style="color:red;"><i>user1@gmail.com</i></span>
-                </div>
-                <div class="row pt-4">
-                    <label class="col-sm-4">Phone</label>
-                    <span class="col-sm-7" style="color:red;"><i>0999999</i></span>
-                </div>
-                <div class="row pt-4">
-                    <label class="col-sm-4"></label>
-                    <span class="col-sm-7" style="color:red;"><i>2020-09-13</i></span>
-                </div>
-                <div class="row pt-4">
-                    <label class="col-sm-4">Address</label>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger">Delete</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>

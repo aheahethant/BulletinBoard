@@ -28,4 +28,16 @@ interface UserDaoInterface
      * @param int $id
      */
     public function updateUser($request,$id);
+    
+    /**
+     * change password
+     * @param \Illuminate\Http\Request $request
+     */
+    public function changePassword($request);
+    
+    /**
+     * delete user by id
+     * @param \Illuminate\Http\Request $request
+     */
+    public function deleteUserById($request);
 }

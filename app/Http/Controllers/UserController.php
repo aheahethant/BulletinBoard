@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contracts\Services\User\UserServiceInterface;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -60,7 +62,7 @@ class UserController extends Controller
             $profile->move($upload_dir, $name);
             $path = 'storage_image/' . $name;
         }
-        return view('users.confirm',[
+        return view('users.confirm', [
             "image" => $path,
             "name" => $request->name,
             "email" => $request->email,
@@ -70,7 +72,7 @@ class UserController extends Controller
             "phone" => $request->phone,
             "dob" => $request->dob,
             "address" => $request->address,
-            ]);
+        ]);
     }
 
     /**
@@ -121,7 +123,38 @@ class UserController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-        $this->userInterface->updateUser($request,$id);
+        $this->userInterface->updateUser($request, $id);
+        return redirect()->route('user_list');
+    }
+
+    /**
+     * change password
+     * @param \Illuminate\Http\Request $request
+     */
+    public function changePassword(Request $request)
+    {
+        $user = Auth::user();
+        $request->validate([
+            'current_password' => ['required', function ($attribute, $value, $fail) use ($user) {
+                if (!Hash::check($value, $user->password)) {
+                    return $fail(__('The current password is incorrect.'));
+                }
+            }
+            ],
+            'new_password' => 'required|min:6',
+            'confirm_new_password' => 'required_with:new_password|same:new_password',
+        ]);
+        $this->userInterface->changePassword($request);
+        return redirect()->route('profile');
+    }
+    
+    /**
+     * delete user by id
+     * @param \Illuminate\Http\Request $request
+     */
+    public function deleteUserById(Request $request)
+    {
+        $this->userInterface->deleteUserById($request);
         return redirect()->route('user_list');
     }
 }

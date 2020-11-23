@@ -26,18 +26,12 @@ class UserDao implements UserDaoInterface
      */
     public function saveUser($request)
     {
-        if ($request->c_type == 'Admin') {
-            $result = 0;
-        } else {
-            $result = 1;
-        }
-
         $user = new User();
         $user->name = $request->c_name;
         $user->email = $request->email;
         $user->password = Hash::make($request->confirm_password);
         $user->profile = $request->profile;
-        $user->type = $result;
+        $user->type = $request->c_type;
         $user->phone = $request->c_phone;
         $user->address = $request->c_address;
         $user->dob = $request->c_dob;
@@ -72,23 +66,37 @@ class UserDao implements UserDaoInterface
             $path = $request->old_profile;
         }
 
-        if ($request->type == 'admin') {
-            $result = $request->type = 0;
-        } else {
-            $result = $request->type = 1;
-        }
-
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->old_password;
         $user->profile = $path;
-        $user->type = $result;
+        $user->type = $request->type;
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->dob = $request->dob;
         $user->create_user_id = Auth::user()->id;
         $user->updated_user_id = Auth::user()->id;
         $user->save();
+    }
+
+    /**
+     * change password
+     * @param \Illuminate\Http\Request $request
+     */
+    public function changePassword($request)
+    {
+        $user = User::find(Auth::user()->id);
+        $user->password = Hash::make($request->confirm_new_password);
+        $user->update();
+    }
+
+    /**
+     * delete user by id
+     * @param \Illuminate\Http\Request $request
+     */
+    public function deleteUserById($request)
+    {
+        User::find($request->id)->delete();
     }
 }

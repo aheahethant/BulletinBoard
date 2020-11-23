@@ -50,7 +50,7 @@
                         <div class="col-sm-7">
                             <button type="submit" class="btn btn-primary">Edit</button>
                             <button type="reset" class="btn btn-secondary">Clear</button>
-                            <a href="{{route('change_password')}}">Change Password</a>
+                            <a href="{{route('edit_password')}}">Change Password</a>
                         </div>
                     </div>
                 </form>

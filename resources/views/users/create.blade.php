@@ -40,8 +40,9 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Type</label>
-                        <select class="form-control col-sm-7" name="type">
-                            <option value="{{old('type')}}">Admin</option>
+                        <select class="form-control col-sm-7" name="type" value="{{old('type')}}">
+                            <option>Choose Type</option>
+                            <option>Admin</option>
                             <option>User</option>
                         </select>
                         @if ($errors->has('type'))

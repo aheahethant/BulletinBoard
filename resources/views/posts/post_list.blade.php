@@ -6,6 +6,8 @@
 
 <!-- script -->
 <script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/post.js') }}"></script>
 
@@ -49,7 +51,9 @@
                         @if( Auth::check() )
                         <td>
                             <a href="{{route('edit_post', $row->id)}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Delete</button>
+                            <button type="button" data-id="{{$row->id}}" data-title="{{$row->title}}"
+                                data-description="{{$row->description}}" data-status="{{$row->status}}"
+                                class="btn btn-danger" data-toggle="modal" data-target="#postInfo">Delete</button>
                         </td>
                         @endif
                     </tr>
@@ -109,7 +113,8 @@
 </div>
 
 <!-- Modal for Post Delete -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="postInfo" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -118,29 +123,38 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <h3>Are you sure to delete post?</h3>
-                <div class="row pt-4">
-                    <label class="col-sm-4">ID</label>
-                    <span class="col-sm-7" style="color:red;"><i>2</i></span>
+            <h3>Are you sure to delete post?</h3>
+            <form action="{{route('delete_post')}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <div class="container">
+                    <div class="row">
+                        <label class="col-sm-4">ID</label>
+                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="post_id" name=id>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4">Title</label>
+                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="post_title" name=title>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4">Description</label>
+                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="post_description"
+                            name=description>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4">Status</label>
+                        <input type="text" style="color:red; border:none;" class="col-sm-7" id="post_status"
+                            name=status>
+                    </div>
                 </div>
-                <div class="row pt-4">
-                    <label class="col-sm-4">Title</label>
-                    <span class="col-sm-7" style="color:red;"><i>Post 2</i></span>
+                <div class="modal-body" id="postDetails">
+
                 </div>
-                <div class="row pt-4">
-                    <label class="col-sm-4">Description</label>
-                    <span class="col-sm-7" style="color:red;"><i>Post Description</i></span>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
                 </div>
-                <div class="row pt-4">
-                    <label class="col-sm-4">Status</label>
-                    <span class="col-sm-7" style="color:red;"><i>Active</i></span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger">Delete</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
