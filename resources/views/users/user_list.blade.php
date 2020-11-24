@@ -5,8 +5,6 @@
 <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
 
 <!-- script -->
-<!-- script for delete user details -->
-
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
@@ -52,43 +50,43 @@
                             <div class="float-right col-sm-8">
                                 <div class="row">
                                     <label class="col-sm-5">Name</label>
-                                    <input type="text" class="col-sm-7 text" id="user_name" disabled>
+                                    <input type="text" class="col-sm-7 text" id="user_name" readonly>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Type</label>
-                                    <input type="text" class="col-sm-7 text" id="user_type" disabled>
+                                    <input type="text" class="col-sm-7 text" id="user_type" readonly>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Email</label>
-                                    <input type="text" class="col-sm-7 text" id="user_email" disabled>
+                                    <input type="text" class="col-sm-7 text" id="user_email" readonly>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Phone</label>
-                                    <input type="text" class="col-sm-7 text" id="user_phone" disabled>
+                                    <input type="text" class="col-sm-7 text" id="user_phone" readonly>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Date of Birth</label>
-                                    <input type="text" class="col-sm-7 text" id="user_dob" disabled>
+                                    <input type="text" class="col-sm-7 text" id="user_dob" readonly>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Address</label>
-                                    <input type="text" class="col-sm-7 text" id="user_address" disabled>
+                                    <input type="text" class="col-sm-7 text" id="user_address" readonly>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Created Date</label>
-                                    <input type="text" class="col-sm-7 text" id="user_created_date" disabled>
+                                    <input type="text" class="col-sm-7 text" id="user_created_date" readonly>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Created User</label>
-                                    <input type="text" class="col-sm-7 text" id="created_user" disabled>
+                                    <input type="text" class="col-sm-7 text" id="created_user" readonly>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Updated Date</label>
-                                    <input type="text" class="col-sm-7 text" id="user_updated_date" disabled>
+                                    <input type="text" class="col-sm-7 text" id="user_updated_date" readonly>
                                 </div>
                                 <div class="row">
                                     <label class="col-sm-5">Updated User</label>
-                                    <input type="text" class="col-sm-7 text" id="updated_user" disabled>
+                                    <input type="text" class="col-sm-7 text" id="updated_user" readonly>
                                 </div>
                             </div>
                         </div>
@@ -172,37 +170,37 @@
                 </button>
             </div>
             <h3 class="red">Are you sure to delete user?</h3>
-            <form action="{{route('delete_user')}}" method="post">
+            <form action="{{route('delete_user')}}" method="POST">
                 @csrf
                 @method('DELETE')
                 <div class="container">
                     <div class="row">
                         <label class="col-sm-4">ID</label>
-                        <input type="text" class="col-sm-7 text" id="user_id" name=id disabled>
+                        <input type="text" class="col-sm-7 text" id="user_id" name=id readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Name</label>
-                        <input type="text" class="col-sm-7 text" id="user_name" name=name disabled>
+                        <input type="text" class="col-sm-7 text" id="user_name" name=name readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Type</label>
-                        <input type="text" class="col-sm-7 text" id="user_type" name=type disabled>
+                        <input type="text" class="col-sm-7 text" id="user_type" name=type readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Email</label>
-                        <input type="text" class="col-sm-7 text" id="user_email" name=email disabled>
+                        <input type="text" class="col-sm-7 text" id="user_email" name=email readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Phone</label>
-                        <input type="text" class="col-sm-7 text" id="user_phone" name=phone disabled>
+                        <input type="text" class="col-sm-7 text" id="user_phone" name=phone readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Date of Birth</label>
-                        <input type="text" class="col-sm-7 text" id="user_dob" name=dob disabled>
+                        <input type="text" class="col-sm-7 text" id="user_dob" name=dob readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Address</label>
-                        <input type="text" class="col-sm-7 text" id="user_address" name=address disabled>
+                        <input type="text" class="col-sm-7 text" id="user_address" name=address readonly>
                     </div>
                 </div>
                 <div class="modal-body" id="userDetails">

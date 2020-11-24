@@ -73,4 +73,14 @@ class UserService implements UserServiceInterface
     {
         return $this->userDao->deleteUserById($request);
     }
+
+    /**
+     * edit profile
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     */
+    public function editProfile($request, $id)
+    {
+        return $this->userDao->editProfile($request, $id);
+    }
 }

@@ -46,6 +46,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Route::put('/update_user/{id}', [UserController::class, 'updateUser'])->middleware('auth')->name('update_user');
 
+    Route::put('/edit_profile/{id}', [UserController::class, 'editProfile'])->middleware('auth')->name('edit_profile');
+
     Route::get('/register', function () {
         return view('users.create');
     })->name('register');

@@ -124,3 +124,21 @@ $(document).ready(function () {
         modal.find('#updated_user').val(updated_user_id);
     });
 });
+
+/**
+ * clear input field
+ */
+$(document).ready(function() {
+    document.getElementById("btn_clear").onclick = function() {
+        myFunction()
+    };
+
+    function myFunction() {
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("dob").value = "";
+        document.getElementById("address").value = "";
+        document.getElementById("profile").src = "";
+    };
+});

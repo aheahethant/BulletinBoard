@@ -99,4 +99,35 @@ class UserDao implements UserDaoInterface
     {
         User::find($request->id)->delete();
     }
+
+    /**
+     * edit profile
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     */
+    public function editProfile($request, $id)
+    {
+        if ($request->hasfile('new_profile')) {
+            $profile = $request->file('new_profile');
+            $upload_dir = public_path() . '/storage_image/';
+            $name = time() . '.' . $profile->getClientOriginalExtension();
+            $profile->move($upload_dir, $name);
+            $path = 'storage_image/' . $name;
+        } else {
+            $path = $request->old_profile;
+        }
+
+        $user = User::find(Auth::user()->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->old_password;
+        $user->profile = $path;
+        $user->type = $request->type;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->dob = $request->dob;
+        $user->create_user_id = $request->create_user;
+        $user->updated_user_id = Auth::user()->id;
+        $user->save();
+    }
 }

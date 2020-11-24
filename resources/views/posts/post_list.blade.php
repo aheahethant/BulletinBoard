@@ -86,31 +86,31 @@
                     <input type="hidden" id="post_id" name=id>
                     <div class="row">
                         <label class="col-sm-5">Title</label>
-                        <input type="text" class="col-sm-7 text" id="post_title" disabled>
+                        <input type="text" class="col-sm-7 text" id="post_title" readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Description</label>
-                        <input type="text" class="col-sm-7 text" id="post_description" disabled>
+                        <input type="text" class="col-sm-7 text" id="post_description" readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Status</label>
-                        <input type="text" class="col-sm-7 text" id="post_status" disabled>
+                        <input type="text" class="col-sm-7 text" id="post_status" readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Created Date</label>
-                        <input type="text" class="col-sm-7 text" id="post_created_date" disabled>
+                        <input type="text" class="col-sm-7 text" id="post_created_date" readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Created User</label>
-                        <input type="text" class="col-sm-7 text" id="post_created_user" disabled>
+                        <input type="text" class="col-sm-7 text" id="post_created_user" readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Updated Date</label>
-                        <input type="text" class="col-sm-7 text" id="post_updated_date" disabled>
+                        <input type="text" class="col-sm-7 text" id="post_updated_date" readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Updated User</label>
-                        <input type="text" class="col-sm-7 text" id="post_updated_user" disabled>
+                        <input type="text" class="col-sm-7 text" id="post_updated_user" readonly>
                     </div>
                 </div>
             </div>
@@ -139,19 +139,19 @@
                 <div class="container">
                     <div class="row">
                         <label class="col-sm-4">ID</label>
-                        <input type="text" class="col-sm-7 text" id="post_id" name=id disabled>
+                        <input type="text" class="col-sm-7 text" id="post_id" name=id readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Title</label>
-                        <input type="text" class="col-sm-7 text" id="post_title" name=title disabled>
+                        <input type="text" class="col-sm-7 text" id="post_title" name=title readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Description</label>
-                        <input type="text" class="col-sm-7 text" id="post_description" name=description disabled>
+                        <input type="text" class="col-sm-7 text" id="post_description" name=description readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Status</label>
-                        <input type="text" class="col-sm-7 text" id="post_status" name=status disabled>
+                        <input type="text" class="col-sm-7 text" id="post_status" name=status readonly>
                     </div>
                 </div>
                 <div class="modal-body" id="postDetails">
