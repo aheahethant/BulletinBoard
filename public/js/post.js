@@ -92,3 +92,17 @@ $(document).ready(function () {
         }
     });
 });
+
+/**
+ * clear input field in post edit blade
+ */
+$(document).ready(function (){
+    document.getElementById("btn_clear").onclick = function() {
+        myFunction()
+    };
+
+    function myFunction() {
+        document.getElementById("title").value = "";
+        document.getElementById("description").value = "";
+    };
+});

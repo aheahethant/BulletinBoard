@@ -7,6 +7,7 @@ use App\Contracts\Services\User\UserServiceInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Ui\Presets\React;
 
 class UserController extends Controller
 {
@@ -156,5 +157,27 @@ class UserController extends Controller
     {
         $this->userInterface->deleteUserById($request);
         return redirect()->route('user_list');
+    }
+
+    /**
+     * edit profile
+     */
+    public function editProfile(Request $request, $id)
+    {
+        $rules = [
+            'name' => 'required|min:3|max:255',
+            'email' => 'required',
+            'type' => 'required',
+            'phone' => '',
+            'dob' => '',
+            'address' => '',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        $this->userInterface->editProfile($request, $id);
+        return redirect()->route('profile');
     }
 }

@@ -40,4 +40,11 @@ interface UserDaoInterface
      * @param \Illuminate\Http\Request $request
      */
     public function deleteUserById($request);
+    
+    /**
+     * edit profile
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     */
+    public function editProfile($request, $id);
 }

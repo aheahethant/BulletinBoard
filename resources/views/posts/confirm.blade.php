@@ -28,7 +28,7 @@
                         <div class="col-sm-4"></div>
                         <div class="col-sm-7">
                             <button type="submit" class="btn btn-primary">Confirm</button>
-                            <a href="{{route('create_post')}}" class="btn btn-secondary">Cancel</a>
+                            <a href="{{ route('create_post') }}" class="btn btn-secondary">Cancel</a>
                         </div>
                     </div>
                 </form>

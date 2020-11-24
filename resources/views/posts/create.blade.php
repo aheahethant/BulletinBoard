@@ -8,7 +8,7 @@
         </div>
         <div class="row pt-5">
             <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto form">
-                <form action="{{route('confirm_post')}}" method="get">
+                <form action="{{ route('confirm_post') }}" method="get">
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Title<span class="red">*</span></label>
                         <input type="text" name="title" class="form-control col-sm-7">

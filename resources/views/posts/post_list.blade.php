@@ -44,22 +44,22 @@
                 <tbody>
                     @foreach($posts as $row)
                     <tr>
-                        <td data-toggle="modal" data-id="{{$row->id}}" data-title="{{$row->title}}"
-                            data-description="{{$row->description}}" data-status="{{$row->status}}"
-                            data-created_at="{{($row->created_at)->format('yy-m-d')}}"
-                            data-create_user_id="{{$row->create_user_id}}"
-                            data-updated_at="{{($row->updated_at)->format('yy-m-d')}}"
-                            data-updated_user_id="{{$row->updated_user_id}}" data-target="#post_details" class="red cursor">
-                            {{$row->title}}</td>
-                        <td>{{$row->description}}</td>
-                        <td>{{$row->user->name}}</td>
-                        <td>{{($row->created_at)->format('yy-m-d')}}</td>
+                        <td data-toggle="modal" data-id="{{ $row->id }}" data-title="{{ $row->title }}"
+                            data-description="{{ $row->description }}" data-status="{{ $row->status }}"
+                            data-created_at="{{ ($row->created_at)->format('yy-m-d') }}"
+                            data-create_user_id="{{ $row->create_user_id }}"
+                            data-updated_at="{{ ($row->updated_at)->format('yy-m-d') }}"
+                            data-updated_user_id="{{ $row->updated_user_id }}" data-target="#post_details" class="red cursor">
+                            {{ $row->title }}</td>
+                        <td>{{ $row->description }}</td>
+                        <td>{{ $row->user->name }}</td>
+                        <td>{{ ($row->created_at)->format('yy-m-d') }}</td>
                         @if( Auth::check() )
                         <td>
                             <div class="d-flex">
-                                <a href="{{route('edit_post', $row->id)}}" class="btn btn-primary margin">Edit</a>
-                                <button type="button" data-id="{{$row->id}}" data-title="{{$row->title}}"
-                                    data-description="{{$row->description}}" data-status="{{$row->status}}"
+                                <a href="{{ route('edit_post', $row->id) }}" class="btn btn-primary margin">Edit</a>
+                                <button type="button" data-id="{{$row->id}}" data-title="{{ $row->title }}"
+                                    data-description="{{ $row->description }}" data-status="{{ $row->status }}"
                                     class="btn btn-danger" data-toggle="modal" data-target="#postInfo">Delete</button>
                             </div>
                         </td>
@@ -86,31 +86,31 @@
                     <input type="hidden" id="post_id" name=id>
                     <div class="row">
                         <label class="col-sm-5">Title</label>
-                        <input type="text" class="col-sm-7 text" id="post_title" disabled>
+                        <input type="text" class="col-sm-7 text" id="post_title" readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Description</label>
-                        <input type="text" class="col-sm-7 text" id="post_description" disabled>
+                        <input type="text" class="col-sm-7 text" id="post_description" readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Status</label>
-                        <input type="text" class="col-sm-7 text" id="post_status" disabled>
+                        <input type="text" class="col-sm-7 text" id="post_status" readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Created Date</label>
-                        <input type="text" class="col-sm-7 text" id="post_created_date" disabled>
+                        <input type="text" class="col-sm-7 text" id="post_created_date" readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Created User</label>
-                        <input type="text" class="col-sm-7 text" id="post_created_user" disabled>
+                        <input type="text" class="col-sm-7 text" id="post_created_user" readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Updated Date</label>
-                        <input type="text" class="col-sm-7 text" id="post_updated_date" disabled>
+                        <input type="text" class="col-sm-7 text" id="post_updated_date" readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-5">Updated User</label>
-                        <input type="text" class="col-sm-7 text" id="post_updated_user" disabled>
+                        <input type="text" class="col-sm-7 text" id="post_updated_user" readonly>
                     </div>
                 </div>
             </div>
@@ -139,19 +139,19 @@
                 <div class="container">
                     <div class="row">
                         <label class="col-sm-4">ID</label>
-                        <input type="text" class="col-sm-7 text" id="post_id" name=id disabled>
+                        <input type="text" class="col-sm-7 text" id="post_id" name=id readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Title</label>
-                        <input type="text" class="col-sm-7 text" id="post_title" name=title disabled>
+                        <input type="text" class="col-sm-7 text" id="post_title" name=title readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Description</label>
-                        <input type="text" class="col-sm-7 text" id="post_description" name=description disabled>
+                        <input type="text" class="col-sm-7 text" id="post_description" name=description readonly>
                     </div>
                     <div class="row">
                         <label class="col-sm-4">Status</label>
-                        <input type="text" class="col-sm-7 text" id="post_status" name=status disabled>
+                        <input type="text" class="col-sm-7 text" id="post_status" name=status readonly>
                     </div>
                 </div>
                 <div class="modal-body" id="postDetails">
