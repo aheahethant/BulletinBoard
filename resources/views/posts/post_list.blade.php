@@ -44,22 +44,22 @@
                 <tbody>
                     @foreach($posts as $row)
                     <tr>
-                        <td data-toggle="modal" data-id="{{$row->id}}" data-title="{{$row->title}}"
-                            data-description="{{$row->description}}" data-status="{{$row->status}}"
-                            data-created_at="{{($row->created_at)->format('yy-m-d')}}"
-                            data-create_user_id="{{$row->create_user_id}}"
-                            data-updated_at="{{($row->updated_at)->format('yy-m-d')}}"
-                            data-updated_user_id="{{$row->updated_user_id}}" data-target="#post_details" class="red cursor">
-                            {{$row->title}}</td>
-                        <td>{{$row->description}}</td>
-                        <td>{{$row->user->name}}</td>
-                        <td>{{($row->created_at)->format('yy-m-d')}}</td>
+                        <td data-toggle="modal" data-id="{{ $row->id }}" data-title="{{ $row->title }}"
+                            data-description="{{ $row->description }}" data-status="{{ $row->status }}"
+                            data-created_at="{{ ($row->created_at)->format('yy-m-d') }}"
+                            data-create_user_id="{{ $row->create_user_id }}"
+                            data-updated_at="{{ ($row->updated_at)->format('yy-m-d') }}"
+                            data-updated_user_id="{{ $row->updated_user_id }}" data-target="#post_details" class="red cursor">
+                            {{ $row->title }}</td>
+                        <td>{{ $row->description }}</td>
+                        <td>{{ $row->user->name }}</td>
+                        <td>{{ ($row->created_at)->format('yy-m-d') }}</td>
                         @if( Auth::check() )
                         <td>
                             <div class="d-flex">
-                                <a href="{{route('edit_post', $row->id)}}" class="btn btn-primary margin">Edit</a>
-                                <button type="button" data-id="{{$row->id}}" data-title="{{$row->title}}"
-                                    data-description="{{$row->description}}" data-status="{{$row->status}}"
+                                <a href="{{ route('edit_post', $row->id) }}" class="btn btn-primary margin">Edit</a>
+                                <button type="button" data-id="{{$row->id}}" data-title="{{ $row->title }}"
+                                    data-description="{{ $row->description }}" data-status="{{ $row->status }}"
                                     class="btn btn-danger" data-toggle="modal" data-target="#postInfo">Delete</button>
                             </div>
                         </td>
