@@ -1,6 +1,16 @@
 @extends('layouts.app')
 @section('content')
 
+@if ($errors->any())
+<div class="alert alert-danger">
+    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <div class="container-fluid">
     <div class="container">
         <div class="row col pt-5">
@@ -12,7 +22,10 @@
                     @csrf
                     <div class="form-group row">
                         <label for="" class="col-sm-4 text-right">CSV File</label>
-                        <input type="file" name="file" class="form-control col-sm-7">
+                        <input type="file" name="file" class="form-control col-sm-7 @error('file') is-invalid @enderror">
+                        @error('file')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-4"></div>

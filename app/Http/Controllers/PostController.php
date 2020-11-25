@@ -86,7 +86,7 @@ class PostController extends Controller
         $this->postInterface->updatePost($request, $id);
         return redirect()->route('post_list');
     }
-    
+
     /**
      * delete post by id
      * @param \Illuminate\Http\Request $request
@@ -96,13 +96,33 @@ class PostController extends Controller
         $this->postInterface->deletePostById($request);
         return redirect()->route('post_list');
     }
-     
+
     /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function importFile() 
+     * @return \Illuminate\Support\Collection
+     */
+    public function importFile(Request $request)
     {
-        Excel::import(new PostImport,request()->file('file'));
-        return redirect()->route('post_list');
+        $rules = [
+            'file' => 'required|mimes:xls,csv,xlsx,txt',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        try {
+            Excel::import(new PostImport, request()->file('file'));
+            return redirect()->route('post_list');
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+            foreach ($failures as $failure) {
+                $failure->row(); // row that went wrong
+                $failure->attribute(); // either heading key (if using heading row concern) or column index
+                $failure->errors(); // Actual error messages from Laravel validator
+                $failure->values(); // The values of the row that has failed.
+            }
+            return back()->withErrors($failures)->withInput();
+        }
     }
 }
