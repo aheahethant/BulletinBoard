@@ -8,10 +8,11 @@
         </div>
         <div class="row pt-5">
             <div class="col-sm-10">
-                <form action="">
+                <form action="{{ route('import_csv_file') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group row">
                         <label for="" class="col-sm-4 text-right">CSV File</label>
-                        <input type="file" class="form-control col-sm-7">
+                        <input type="file" name="file" class="form-control col-sm-7">
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-4"></div>

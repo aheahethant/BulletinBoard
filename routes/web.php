@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use Whoops\Run;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +78,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/upload_post', function () {
         return view('posts.upload');
     })->middleware('auth')->name('upload_post');
+
+    Route::post('import_csv_file', [PostController::class, 'importFile'])->middleware('auth')->name('import_csv_file');
 
     /**
      * Web Routes for Profile
