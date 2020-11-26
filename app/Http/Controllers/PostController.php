@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Services\Post\PostServiceInterface;
 use App\Http\Controllers\Controller;
+use App\Imports\PostImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
+use phpDocumentor\Reflection\PseudoTypes\False_;
 
 class PostController extends Controller
 {
@@ -84,7 +87,7 @@ class PostController extends Controller
         $this->postInterface->updatePost($request, $id);
         return redirect()->route('post_list');
     }
-    
+
     /**
      * delete post by id
      * @param \Illuminate\Http\Request $request
@@ -93,5 +96,40 @@ class PostController extends Controller
     {
         $this->postInterface->deletePostById($request);
         return redirect()->route('post_list');
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function importFile(Request $request)
+    {
+        $rules = [
+            'file' => 'required|mimes:csv,txt',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        $file = $request->file->path();
+        if(($handle = fopen($file, 'r')) !== FALSE){
+            $header_column = fgetcsv($handle, 0, ',');
+            if(count($header_column)>2){
+                return redirect()->back()->with('fail', 'Header columns only have title & description');
+            }
+        }
+        try {
+            Excel::import(new PostImport, request()->file('file'));
+            return redirect()->route('post_list');
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+            foreach ($failures as $failure) {
+                $failure->row(); // row that went wrong
+                $failure->attribute(); // either heading key (if using heading row concern) or column index
+                $failure->errors(); // Actual error messages from Laravel validator
+                $failure->values(); // The values of the row that has failed.
+            }
+            return back()->withErrors($failures)->withInput();
+        }
     }
 }
