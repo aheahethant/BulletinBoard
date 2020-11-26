@@ -43,13 +43,10 @@
                 </thead>
                 <tbody>
                     @foreach($posts as $row)
+                    @guest
+                    @if($row->status == 1)
                     <tr>
-                        <td data-toggle="modal" data-id="{{ $row->id }}" data-title="{{ $row->title }}"
-                            data-description="{{ $row->description }}" data-status="{{ $row->status }}"
-                            data-created_at="{{ ($row->created_at)->format('yy-m-d') }}"
-                            data-create_user_id="{{ $row->create_user_id }}"
-                            data-updated_at="{{ ($row->updated_at)->format('yy-m-d') }}"
-                            data-updated_user_id="{{ $row->updated_user_id }}" data-target="#post_details" class="red cursor">
+                        <td data-toggle="modal" data-id="{{ $row->id }}" data-title="{{ $row->title }}" data-description="{{ $row->description }}" data-status="{{ $row->status }}" data-created_at="{{ ($row->created_at)->format('yy-m-d') }}" data-create_user_id="{{ $row->create_user_id }}" data-updated_at="{{ ($row->updated_at)->format('yy-m-d') }}" data-updated_user_id="{{ $row->updated_user_id }}" data-target="#post_details" class="red cursor">
                             {{ $row->title }}</td>
                         <td>{{ $row->description }}</td>
                         <td>{{ $row->user->name }}</td>
@@ -58,13 +55,34 @@
                         <td>
                             <div class="d-flex">
                                 <a href="{{ route('edit_post', $row->id) }}" class="btn btn-primary margin">Edit</a>
-                                <button type="button" data-id="{{$row->id}}" data-title="{{ $row->title }}"
-                                    data-description="{{ $row->description }}" data-status="{{ $row->status }}"
-                                    class="btn btn-danger" data-toggle="modal" data-target="#postInfo">Delete</button>
+                                @if(Auth::user()->id == $row->create_user_id)
+                                <button type="button" data-id="{{$row->id}}" data-title="{{ $row->title }}" data-description="{{ $row->description }}" data-status="{{ $row->status }}" class="btn btn-danger" data-toggle="modal" data-target="#postInfo">Delete</button>
+                                @endif
                             </div>
                         </td>
                         @endif
                     </tr>
+                    @endif
+                    @endguest
+                    @if(Auth::check())
+                    <tr>
+                        <td data-toggle="modal" data-id="{{ $row->id }}" data-title="{{ $row->title }}" data-description="{{ $row->description }}" data-status="{{ $row->status }}" data-created_at="{{ ($row->created_at)->format('yy-m-d') }}" data-create_user_id="{{ $row->create_user_id }}" data-updated_at="{{ ($row->updated_at)->format('yy-m-d') }}" data-updated_user_id="{{ $row->updated_user_id }}" data-target="#post_details" class="red cursor">
+                            {{ $row->title }}</td>
+                        <td>{{ $row->description }}</td>
+                        <td>{{ $row->user->name }}</td>
+                        <td>{{ ($row->created_at)->format('yy-m-d') }}</td>
+                        @if( Auth::check() )
+                        <td>
+                            <div class="d-flex">
+                                <a href="{{ route('edit_post', $row->id) }}" class="btn btn-primary margin">Edit</a>
+                                @if(Auth::user()->id == $row->create_user_id)
+                                <button type="button" data-id="{{$row->id}}" data-title="{{ $row->title }}" data-description="{{ $row->description }}" data-status="{{ $row->status }}" class="btn btn-danger" data-toggle="modal" data-target="#postInfo">Delete</button>
+                                @endif
+                            </div>
+                        </td>
+                        @endif
+                    </tr>
+                    @endif
                     @endforeach
                 </tbody>
             </table>
@@ -122,8 +140,7 @@
 </div>
 
 <!-- Modal for Post Delete -->
-<div class="modal fade" id="postInfo" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="postInfo" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

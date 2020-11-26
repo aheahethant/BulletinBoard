@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Models\User;
 use Whoops\Run;
 
 /*
@@ -52,7 +53,6 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/register', function () {
         return view('users.create');
     })->name('register');
-
 
     /**
      * Web Routes for Post

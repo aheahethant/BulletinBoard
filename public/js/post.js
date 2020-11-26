@@ -3,7 +3,6 @@
  */
 $(document).ready(function () {
     var table = $('#post_list').DataTable({
-        "bPaginate": false,
         "bLengthChange": false,
         "bFilter": true,
         "bInfo": false,

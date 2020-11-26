@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
+<!-- script -->
+<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/post.js') }}"></script>
 <div class="container-fluid">
     <div class="container">
         <div class="row col pt-5">
@@ -11,14 +14,14 @@
                 <form action="{{ route('confirm_post') }}" method="get">
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Title<span class="red">*</span></label>
-                        <input type="text" name="title" class="form-control col-sm-7">
+                        <input type="text" name="title" id="title" class="form-control col-sm-7" value="">
                         @if ($errors->has('title'))
                         <span class="form-text text-danger">{{ $errors->first('title') }}</span>
                         @endif
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 text-right">Description<span class="red">*</span></label>
-                        <textarea name="description" class="col-sm-7"></textarea>
+                        <textarea name="description" id="description" class="col-sm-7"></textarea>
                         @if ($errors->has('description'))
                         <span class="form-text text-danger">{{ $errors->first('description') }}</span>
                         @endif
@@ -35,5 +38,4 @@
         </div>
     </div>
 </div>
-
 @endsection

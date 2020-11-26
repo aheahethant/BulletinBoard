@@ -81,7 +81,7 @@
                         <div class="col-sm-4"></div>
                         <div class="col-sm-7">
                             <button type="submit" class="btn btn-primary">Confirm</button>
-                            <a href="{{ route('register') }}" class="btn btn-secondary">Cancel</a>
+                            <a onClick="history.go(-1); return false;" class="btn btn-secondary">Cancel</a>
                         </div>
                     </div>
                 </form>
