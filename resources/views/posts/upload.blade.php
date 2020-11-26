@@ -11,6 +11,11 @@
     </ul>
 </div>
 @endif
+@if ($message = Session::get('fail'))
+<div class="alert alert-danger mt-3">
+    <p>{{ $message }}</p>
+</div>
+@endif
 <div class="container-fluid">
     <div class="container">
         <div class="row col pt-5">

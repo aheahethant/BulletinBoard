@@ -8,6 +8,7 @@ use App\Imports\PostImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
+use phpDocumentor\Reflection\PseudoTypes\False_;
 
 class PostController extends Controller
 {
@@ -110,7 +111,13 @@ class PostController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-
+        $file = $request->file->path();
+        if(($handle = fopen($file, 'r')) !== FALSE){
+            $header_column = fgetcsv($handle, 0, ',');
+            if(count($header_column)>2){
+                return redirect()->back()->with('fail', 'only title & description');
+            }
+        }
         try {
             Excel::import(new PostImport, request()->file('file'));
             return redirect()->route('post_list');
