@@ -104,7 +104,7 @@ class PostController extends Controller
     public function importFile(Request $request)
     {
         $rules = [
-            'file' => 'required|mimes:xls,csv,xlsx,txt',
+            'file' => 'required|mimes:csv,txt',
         ];
         $validator = Validator::make($request->all(), $rules);
 
@@ -115,7 +115,7 @@ class PostController extends Controller
         if(($handle = fopen($file, 'r')) !== FALSE){
             $header_column = fgetcsv($handle, 0, ',');
             if(count($header_column)>2){
-                return redirect()->back()->with('fail', 'only title & description');
+                return redirect()->back()->with('fail', 'Header columns only have title & description');
             }
         }
         try {
