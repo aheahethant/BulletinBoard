@@ -63,7 +63,9 @@
                         @endif
                         @else
                         <li class="nav-item">
+                            @if(Auth::user()->type == 0)
                             <a class="nav-link" href="{{route('register')}}">Create User</a>
+                            @endif
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

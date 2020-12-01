@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Middleware\CheckAge;
+use App\Models\User;
 use Whoops\Run;
 
 /*
@@ -41,18 +43,17 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Route::put('/change_password', [UserController::class, 'changePassword'])->middleware('auth')->name('change_password');
 
-    Route::delete('/delete_user', [UserController::class, 'deleteUserById'])->middleware('auth')->name('delete_user');
+    Route::delete('/delete_user', [UserController::class, 'deleteUserById'])->middleware('auth')->middleware(CheckAge::class)->name('delete_user');
 
-    Route::get('/edit_user/{id}', [UserController::class, 'editUser'])->middleware('auth')->name('edit_user');
+    Route::get('/edit_user/{id}', [UserController::class, 'editUser'])->middleware('auth')->middleware(CheckAge::class)->name('edit_user');
 
-    Route::put('/update_user/{id}', [UserController::class, 'updateUser'])->middleware('auth')->name('update_user');
+    Route::put('/update_user/{id}', [UserController::class, 'updateUser'])->middleware('auth')->middleware(CheckAge::class)->name('update_user');
 
     Route::put('/edit_profile/{id}', [UserController::class, 'editProfile'])->middleware('auth')->name('edit_profile');
 
     Route::get('/register', function () {
         return view('users.create');
     })->name('register');
-
 
     /**
      * Web Routes for Post

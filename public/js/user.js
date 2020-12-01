@@ -26,7 +26,6 @@ $.fn.dataTableExt.afnFiltering.push(
  */
 $(document).ready(function () {
     var table = $('#user_list').DataTable({
-        "bPaginate": false,
         "bLengthChange": false,
         "bFilter": true,
         "bInfo": false,

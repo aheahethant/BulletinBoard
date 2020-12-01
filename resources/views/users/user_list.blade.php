@@ -112,7 +112,9 @@
                         <th scope="col">Address</th>
                         <th scope="col">Created Date</th>
                         <th scope="col">Updated Date</th>
+                        @if(Auth::user()->type == 0)
                         <th scope="col">Operation</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -139,6 +141,7 @@
                         <td>{{ $row->address }}</td>
                         <td>{{ ($row->created_at)->format('yy-m-d') }}</td>
                         <td>{{ ($row->updated_at)->format('yy-m-d') }}</td>
+                        @if(Auth::user()->type == 0)
                         <td>
                             <div class="d-flex">
                                 <a href="{{ route('edit_user', $row->id) }}" class="btn btn-primary margin">Edit</a>
@@ -149,6 +152,7 @@
                                     data-target="#userInfo">Delete</button>
                             </div>
                         </td>
+                        @endif
                     </tr>
 
 
