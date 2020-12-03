@@ -13,6 +13,6 @@ class PostAPIDao implements PostAPIDaoInterface
      */
     public function index()
     {
-        return Post::all();
+        return Post::with('user')->get();
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\PostAPIController;
+use App\Http\Controllers\API\UserAPIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,12 @@ Route::get('/test', function() {
     return response()->json(['data' => 'test']);
 });
 
+/**
+ * Route for User
+ */
+Route::get('/user/list', [UserAPIController::class, 'index']);
+
+/**
+ * Route for Post
+ */
 Route::get('/post/list', [PostAPIController::class, 'index']);
