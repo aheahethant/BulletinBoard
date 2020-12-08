@@ -4,6 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Contracts\Services\API\PostAPIServiceInterface;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Laravel\Ui\Presets\React;
 
 class PostAPIController extends Controller
 {
@@ -28,5 +31,33 @@ class PostAPIController extends Controller
     public function index()
     {
         return $this->postAPIInterface->index();
+    }
+
+    /**
+     * save post
+     * @param \App\Http\Controllers\API\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function savePost(Request $request)
+    {
+        return $this->postAPIInterface->savePost($request);
+    }
+
+    /**
+     * show post detail
+     * @param int $id
+     */
+    public function postDetail($id)
+    {
+        return $this->postAPIInterface->postDetail($id);
+    }
+
+    /**
+     * edit post
+     * @param int $id
+     */
+    public function editPost(Request $request,$id)
+    {
+        return $this->postAPIInterface->editPost($request, $id);
     }
 }

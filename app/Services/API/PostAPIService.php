@@ -27,4 +27,34 @@ class PostAPIService implements PostAPIServiceInterface
     {
         return $this->postAPIDao->index();
     }
+
+    /**
+     * save Post
+     * @param \App\Http\Controllers\API\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function savePost($request)
+    {
+        return $this->postAPIDao->savePost($request);
+    }
+    
+    /**
+     * show post detail
+     * @param int $id
+     */
+    public function postDetail($id)
+    {
+        return $this->postAPIDao->postDetail($id);
+    }
+    
+    /**
+     * edit post
+     * @param \App\Http\Controllers\API\Request $request
+     * @param int $id
+     * @return post by $id
+     */
+    public function editPost($request,$id)
+    {
+        return $this->postAPIDao->editPost($request, $id);
+    }
 }

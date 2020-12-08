@@ -33,3 +33,9 @@ Route::get('/user/list', [UserAPIController::class, 'index']);
  * Route for Post
  */
 Route::get('/post/list', [PostAPIController::class, 'index']);
+
+Route::post('/create/post', [PostAPIController::class, 'savePost']);
+
+Route::get('/post/detail/{id}', [PostAPIController::class, 'postDetail']);
+
+Route::put('/edit/post/{id}', [PostAPIController::class, 'editPost']);
