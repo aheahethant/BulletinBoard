@@ -57,4 +57,13 @@ class PostAPIService implements PostAPIServiceInterface
     {
         return $this->postAPIDao->editPost($request, $id);
     }
+    
+    /**
+     * post delete
+     * @param int $id
+     */
+    public function destroy($id)
+    {
+        return $this->postAPIDao->destroy($id);
+    }
 }

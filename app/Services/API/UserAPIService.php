@@ -27,4 +27,58 @@ class UserAPIService implements UserAPIServiceInterface
     {
         return $this->userAPIDao->index();
     }
+    
+    /**
+     * create user
+     * @param \Illuminate\Http\Request $request
+     */
+    public function createUser($request)
+    {
+        return $this->userAPIDao->createUser($request);
+    }
+    
+    /**
+     * login
+     * @param \Illuminate\Http\Request $request
+     */
+    public function login($request)
+    {
+        return $this->userAPIDao->login($request);
+    }
+    
+     /**
+     * logout
+     */
+    public function logout($request)
+    {
+        return $this->userAPIDao->logout($request);
+    }
+
+    /**
+     * update user
+     * @param int $id
+     * @param \Illuminate\Http\Request $request
+     */
+    public function updateUser($request, $id)
+    {
+        return $this->userAPIDao->updateUser($request, $id);
+    }
+    
+    /**
+     * delete user
+     * @param int $id
+     */
+    public function destroy($id)
+    {
+        return $this->userAPIDao->destroy($id);
+    }
+
+    /**
+    * change password
+    * @param \Illuminate\Http\Request $request
+    */
+   public function changePassword($request, $id)
+   {
+       return $this->userAPIDao->changePassword($request, $id);
+   }
 }

@@ -14,7 +14,12 @@ class PostAPIDao implements PostAPIDaoInterface
      */
     public function index()
     {
-        return Post::with('user')->get();
+        $posts = Post::with('user')->get();
+        return $posts;
+        // return response()->json([
+        //     'success' => true,
+        //     'data' => $posts
+        // ]);
     }
 
     /**
@@ -47,5 +52,31 @@ class PostAPIDao implements PostAPIDaoInterface
         $post = Post::find($id);
         $post -> update($request->only('title', 'description', 'create_user_id', 'updated_user_id'));
         return $post;
+    }
+    
+    /**
+     * delete post
+     */
+    public function destroy($id)
+    {
+        $post = Post::find($id);
+ 
+        if (!$post) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Post not found'
+            ], 400);
+        }
+ 
+        if ($post->delete()) {
+            return response()->json([
+                'success' => true
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Post can not be deleted'
+            ], 500);
+        }
     }
 }

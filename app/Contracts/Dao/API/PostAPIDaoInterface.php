@@ -30,4 +30,10 @@ interface PostAPIDaoInterface
      * @return post by $id
      */
     public function editPost($request,$id);
+    
+    /**
+     * post delete
+     * @param int $id
+     */
+    public function destroy($id);
 }

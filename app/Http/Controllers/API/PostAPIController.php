@@ -21,6 +21,7 @@ class PostAPIController extends Controller
     public function __construct(PostAPIServiceInterface $postAPIInterface)
     {
         $this->postAPIInterface = $postAPIInterface;
+        // $this->middleware('auth:api');
     }
 
     /**
@@ -59,5 +60,14 @@ class PostAPIController extends Controller
     public function editPost(Request $request,$id)
     {
         return $this->postAPIInterface->editPost($request, $id);
+    }
+    
+    /**
+     * post delete
+     * @param int $id
+     */
+    public function destroy($id)
+    {
+        return $this->postAPIInterface->destroy($id);
     }
 }
