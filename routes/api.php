@@ -42,6 +42,8 @@ Route::post('/logout', [UserAPIController::class, 'logout']);
 
 Route::post('/change/password/{id}', [UserAPIController::class, 'changePassword']);
 
+Route::get('/user/detail/{id}', [UserAPIController::class, 'userDetail']);
+
 /**
  * Route for Post
  */
@@ -54,3 +56,7 @@ Route::get('/post/detail/{id}', [PostAPIController::class, 'postDetail']);
 Route::put('/edit/post/{id}', [PostAPIController::class, 'editPost']);
 
 Route::delete('/delete/post/{id}', [PostAPIController::class, 'destroy']);
+
+Route::post('/upload/post', [PostAPIController::class, 'importFile']);
+
+Route::get('/search/post/list', [PostAPIController::class, 'searchPostList']);

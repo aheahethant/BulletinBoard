@@ -41,8 +41,8 @@ class UserAPIDao implements UserAPIDaoInterface
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->dob = $request->dob;
-        $user->create_user_id = $request->create_user_id;
-        $user->updated_user_id = $request->updated_user_id;
+        $user->create_user_id = 1;
+        $user->updated_user_id = 1;
         $user->save();
         $token = $user->createToken('LaravelAuthApp')->accessToken;
         return response()->json(['token' => $token], 200);
@@ -101,8 +101,8 @@ class UserAPIDao implements UserAPIDaoInterface
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->dob = $request->dob;
-        $user->create_user_id = $request->create_user_id;
-        $user->updated_user_id = $request->updated_user_id;
+        $user->create_user_id = 1;
+        $user->updated_user_id = 1;
         $user->update();
         return $user;
     }
@@ -112,7 +112,7 @@ class UserAPIDao implements UserAPIDaoInterface
      */
     public function destroy($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
  
         if (!$user) {
             return response()->json([
@@ -151,9 +151,18 @@ class UserAPIDao implements UserAPIDaoInterface
             'new_password' => 'required|min:6',
             'confirm_new_password' => 'required_with:new_password|same:new_password',
         ]);
-        // $this->userInterface->changePassword($request);
-        // $user->password = Hash::make($request->password);
-        // $user->update();
+        $user->password = Hash::make($request->confirm_new_password);
+        $user->update();
         return response()->json($request);
+    }
+    
+    /**
+     * detail user
+     * @param int $id
+     */
+    public function userDetail($id)
+    {
+        $user = User::find($id);
+        return $user;
     }
 }

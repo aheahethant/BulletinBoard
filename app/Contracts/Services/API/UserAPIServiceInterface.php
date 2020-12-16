@@ -45,4 +45,10 @@ interface UserAPIServiceInterface
     * @param \Illuminate\Http\Request $request
     */
    public function changePassword($request, $id);
+   
+    /**
+     * detail user
+     * @param int $id
+     */
+    public function userDetail($id);
 }

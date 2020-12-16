@@ -81,4 +81,13 @@ class UserAPIService implements UserAPIServiceInterface
    {
        return $this->userAPIDao->changePassword($request, $id);
    }
+   
+    /**
+     * detail user
+     * @param int $id
+     */
+    public function userDetail($id)
+    {
+        return $this->userAPIDao->userDetail($id);
+    }
 }

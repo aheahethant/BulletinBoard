@@ -81,4 +81,12 @@ class UserAPIController extends Controller
         return $this->userAPIInterface->changePassword($request, $id);
     }
     
+    /**
+     * detail user
+     * @param int $id
+     */
+    public function userDetail($id)
+    {
+        return $this->userAPIInterface->userDetail($id);
+    }
 }

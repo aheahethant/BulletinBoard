@@ -16,10 +16,6 @@ class PostAPIDao implements PostAPIDaoInterface
     {
         $posts = Post::with('user')->get();
         return $posts;
-        // return response()->json([
-        //     'success' => true,
-        //     'data' => $posts
-        // ]);
     }
 
     /**
@@ -29,7 +25,12 @@ class PostAPIDao implements PostAPIDaoInterface
      */
     public function savePost($request)
     {
-        $post = Post::create($request->only('title', 'description', 'create_user_id', 'updated_user_id'));
+        $post = Post::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'create_user_id' => 1,
+            'updated_user_id' => 1
+        ]);
         return $post;
     }
 
@@ -50,7 +51,12 @@ class PostAPIDao implements PostAPIDaoInterface
     public function editPost($request,$id)
     {
         $post = Post::find($id);
-        $post -> update($request->only('title', 'description', 'create_user_id', 'updated_user_id'));
+        $post -> update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'create_user_id' => 1,
+            'updated_user_id' => 2
+        ]);
         return $post;
     }
     
@@ -78,5 +84,5 @@ class PostAPIDao implements PostAPIDaoInterface
                 'message' => 'Post can not be deleted'
             ], 500);
         }
-    }
+    }    
 }

@@ -46,4 +46,10 @@ interface UserAPIDaoInterface
      * @param int $id
      */
     public function changePassword($request, $id);
+    
+    /**
+     * detail user
+     * @param int $id
+     */
+    public function userDetail($id);
 }
