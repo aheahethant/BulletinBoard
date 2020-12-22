@@ -26,8 +26,8 @@ class PostDao implements PostDaoInterface
     public function savePost($request)
     {
         $post = new Post;
-        $post->title = $request->confirm_title;
-        $post->description = $request->confirm_description;
+        $post->title = $request['confirm_title'];
+        $post->description = $request['confirm_description'];
         $post->create_user_id = Auth::user()->id;
         $post->updated_user_id = Auth::user()->id;
         $post->save();
@@ -50,18 +50,18 @@ class PostDao implements PostDaoInterface
      */
     public function updatePost($request, $id)
     {
-        if ($request->status == 'checked') {
-            $result = $request->status = 1;
+        if ($request['status'] == 'checked') {
+            $result = $request['status'] = 1;
         } else {
-            $result = $request->status = 0;
+            $result = $request['status'] = 0;
         }
 
         $post = Post::find($id);
-        $post->title = $request->title;
-        $post->description = $request->description;
+        $post->title = $request['title'];
+        $post->description = $request['description'];
         $post->status = $result;
         $post->updated_user_id = Auth::user()->id;
-        $post->save();
+        $post->update();
     }
     
     /**

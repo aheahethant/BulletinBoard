@@ -87,7 +87,7 @@ class UserDao implements UserDaoInterface
     public function changePassword($request)
     {
         $user = User::find(Auth::user()->id);
-        $user->password = Hash::make($request->confirm_new_password);
+        $user->password = Hash::make($request['confirm_new_password']);
         $user->update();
     }
 

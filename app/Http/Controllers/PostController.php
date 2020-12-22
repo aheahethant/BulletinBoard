@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Services\Post\PostServiceInterface;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostCreateRequest;
+use App\Http\Requests\PostUpdateRequest;
+use App\Http\Requests\PostUploadFileRequest;
 use App\Imports\PostImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -36,23 +39,15 @@ class PostController extends Controller
     }
 
     /**
-     * save post 
+     * save post
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function savePost(Request $request)
+    public function savePost(PostCreateRequest $request)
     {
-        $rules = [
-            'confirm_title' => 'required|min:3|max:255',
-            'confirm_description' => 'required|min:3|max:255',
-            'status' => '',
-        ];
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-        $this->postInterface->savePost($request);
+        // validation for request values
+        $validated = $request->validated();
+        $this->postInterface->savePost($validated);
         return redirect()->route('post_list');
     }
 
@@ -73,17 +68,8 @@ class PostController extends Controller
      * @param mixed $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function updatePost(Request $request, $id)
+    public function updatePost(PostUpdateRequest $request, $id)
     {
-        $rules = [
-            'title' => 'required|min:3|max:255',
-            'description' => 'required|min:3|max:255',
-        ];
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
         $this->postInterface->updatePost($request, $id);
         return redirect()->route('post_list');
     }
@@ -101,20 +87,12 @@ class PostController extends Controller
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function importFile(Request $request)
+    public function importFile(PostUploadFileRequest $request)
     {
-        $rules = [
-            'file' => 'required|mimes:csv,txt',
-        ];
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-        $file = $request->file->path();
-        if(($handle = fopen($file, 'r')) !== FALSE){
+        $file = $request['file']->path();
+        if (($handle = fopen($file, 'r')) !== false) {
             $header_column = fgetcsv($handle, 0, ',');
-            if(count($header_column)>2){
+            if (count($header_column)>2) {
                 return redirect()->back()->with('fail', 'Header columns only have title & description');
             }
         }

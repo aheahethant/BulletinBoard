@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contracts\Services\User\UserServiceInterface;
+use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\UserConfirmRequest;
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -37,25 +41,8 @@ class UserController extends Controller
     /**
      * create User
      */
-    public function createUser(Request $request)
+    public function createUser(UserCreateRequest $request)
     {
-        $rules = [
-            'name' => 'required|min:3|max:255',
-            'email' => 'required|unique:users',
-            'password' => 'min:6',
-            'confirm_password' => 'required_with:password|same:password|min:6',
-            'profile' => 'required|mimes:jpeg,bmp,png',
-            'type' => 'required',
-            'phone' => '',
-            'dob' => '',
-            'address' => '',
-        ];
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-
         if ($request->hasfile('profile')) {
             $profile = $request->file('profile');
             $upload_dir = public_path() . '/storage_image/';
@@ -65,14 +52,14 @@ class UserController extends Controller
         }
         return view('users.confirm', [
             "image" => $path,
-            "name" => $request->name,
-            "email" => $request->email,
-            "password" => $request->password,
-            "confirm_password" => $request->confirm_password,
-            'type' => $request->type,
-            "phone" => $request->phone,
-            "dob" => $request->dob,
-            "address" => $request->address,
+            "name" => $request['name'],
+            "email" => $request['email'],
+            "password" => $request['password'],
+            "confirm_password" => $request['confirm_password'],
+            'type' => $request['type'],
+            "phone" => $request['phone'],
+            "dob" => $request['dob'],
+            "address" => $request['address'],
         ]);
     }
 
@@ -80,16 +67,8 @@ class UserController extends Controller
      * save User
      * @param \Illuminate\Http\Request $request
      */
-    public function saveUser(Request $request)
+    public function saveUser(UserConfirmRequest $request)
     {
-        $request->validate([
-            'c_name' => 'required',
-            'email' => 'required',
-            'c_password' => 'required',
-            'confirm_password' => 'required_with:c_password|same:c_password',
-            'profile' => 'required',
-            'c_type' => 'required'
-        ]);
         $this->userInterface->saveUser($request);
         return redirect()->route('main')->with('message', 'Your account has been Sucessfully created.');
     }
@@ -109,21 +88,8 @@ class UserController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param int $id
      */
-    public function updateUser(Request $request, $id)
+    public function updateUser(UserUpdateRequest $request, $id)
     {
-        $rules = [
-            'name' => 'required|min:3|max:255',
-            'email' => 'required',
-            'type' => 'required',
-            'phone' => '',
-            'dob' => '',
-            'address' => '',
-        ];
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
         $this->userInterface->updateUser($request, $id);
         return redirect()->route('user_list');
     }
@@ -132,20 +98,11 @@ class UserController extends Controller
      * change password
      * @param \Illuminate\Http\Request $request
      */
-    public function changePassword(Request $request)
+    public function changePassword(ChangePasswordRequest $request)
     {
-        $user = Auth::user();
-        $request->validate([
-            'current_password' => ['required', function ($attribute, $value, $fail) use ($user) {
-                if (!Hash::check($value, $user->password)) {
-                    return $fail(__('The current password is incorrect.'));
-                }
-            }
-            ],
-            'new_password' => 'required|min:6',
-            'confirm_new_password' => 'required_with:new_password|same:new_password',
-        ]);
-        $this->userInterface->changePassword($request);
+        // validation for request values
+        $validated = $request->validated();
+        $this->userInterface->changePassword($validated);
         return redirect()->route('profile');
     }
     
@@ -164,19 +121,6 @@ class UserController extends Controller
      */
     public function editProfile(Request $request, $id)
     {
-        $rules = [
-            'name' => 'required|min:3|max:255',
-            'email' => 'required',
-            'type' => 'required',
-            'phone' => '',
-            'dob' => '',
-            'address' => '',
-        ];
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
         $this->userInterface->editProfile($request, $id);
         return redirect()->route('profile');
     }
